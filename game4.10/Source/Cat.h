@@ -15,7 +15,7 @@ namespace game_framework {
 		void SetIsAlive(bool alive);							// 設定是否活著
 		void SetBlood(int attackCount);							// 扣血
 		void Attack(Cat cat);									// 攻擊
-		virtual void BeAttack(int attack);
+		virtual void BeAttack(int attack) {};
 
 	protected:
 
