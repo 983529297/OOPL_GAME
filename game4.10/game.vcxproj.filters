@@ -210,5 +210,11 @@
     <Image Include="RES\back1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\opend.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\start.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

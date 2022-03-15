@@ -5,21 +5,25 @@ namespace game_framework {
 	public:
 		Tower_enemy();
 		~Tower_enemy();
-		void SetBoold();
-		void SetAttack();
-		bool IsAlive();											// 是否活著
-		void LoadBitmap();										// 載入圖形
-		void OnShow();											// 將圖形貼到畫面
-		void SetXY(int nx, int ny);								// 設定圓心的座標
-		void SetIsAlive(bool alive);							// 設定是否活著
-		void SetBlood(int attackCount);							// 扣血
+		void SetAttack(int);
+		void BeAttack(int);
+		void SetDefence(int);
+		bool IsAlive();										// 是否活著
+		//bool CheckEnemy(Cat*);									// find enemy
+		void LoadBitmap();									// 載入圖形
+		void OnShow();										// 將圖形貼到畫面
+		void SetXY(int, int);								// 設定圓心的座標
+		void SetIsAlive(bool);								// 設定是否活著
+		void SetBlood(int);									
 
 	protected:
 
 	private:
+		CMovingBitmap bmp;
 		int blood;
 		int attackPoint;
 		bool is_alive;				// 是否活著
 		int defencePoint;
+		int x, y;
 	};
 }
