@@ -52,11 +52,12 @@ namespace game_framework {
 
 	void Tower_friend::LoadBitmap()
 	{
-		//bmp.LoadBitmap(IDB_TOWER1, RGB(0, 0, 0));
+		bmp.LoadBitmap(IDB_TOWER1, RGB(255, 0, 0));
 	}
 
 	void Tower_friend::OnShow()
 	{
-		//bmp.ShowBitmap(IDB_TOWER1, RGB(0, 0, 0));
+		bmp.SetTopLeft(1000, 250);
+		bmp.ShowBitmap(0.7);
 	}
 }

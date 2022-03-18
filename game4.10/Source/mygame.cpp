@@ -81,6 +81,7 @@ void CGameStateInit::OnInit()
 	//
 	logo.LoadBitmap(IDB_OPEND);
 	start.LoadBitmap(IDB_START);
+	start_size = 0.81;
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -101,6 +102,14 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
 }
 
+void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
+{
+	if (0 < point.x && point.x < 100 && 0 < point.y && point.y < 100)
+		start_size = 0.9;
+	else
+		start_size = 0.81;
+}
+
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
@@ -115,7 +124,7 @@ void CGameStateInit::OnShow()
 	start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
 	
 	logo.ShowBitmap();
-	start.ShowBitmap(0.81);
+	start.ShowBitmap(start_size);
 	//
 	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
 	//
@@ -244,7 +253,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
 	
 	background.LoadBitmap(IDB_BACK1);					// 載入背景的圖形
-	
+	tower_friend.LoadBitmap();
+	tower_enemy.LoadBitmap();
 	ShowInitProgress(50);
 	Sleep(300); // 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	/*/
@@ -317,6 +327,7 @@ void CGameStateRun::OnShow()
 {
 	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
 	background.ShowBitmap();
-	
+	tower_friend.OnShow();
+	tower_enemy.OnShow();
 }
 }

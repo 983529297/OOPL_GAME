@@ -216,5 +216,11 @@
     <Image Include="RES\start.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\tower1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\tower2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
