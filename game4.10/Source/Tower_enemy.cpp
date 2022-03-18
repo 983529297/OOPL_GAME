@@ -57,7 +57,7 @@ namespace game_framework {
 
 	void Tower_enemy::OnShow()
 	{
-		bmp.SetTopLeft(100, 220);
+		bmp.SetTopLeft(70, 220);
 		bmp.ShowBitmap(0.7);
 	}
 }

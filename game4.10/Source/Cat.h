@@ -4,7 +4,7 @@ namespace game_framework {
 	{
 	public:
 		Cat() {};
-		~Cat() {};
+		virtual ~Cat() {};
 		virtual bool IsHit() { return true; };											// 是否遇到敵人
 		virtual bool IsAlive() { return true; };											// 是否活著
 		virtual bool IsEnemy() { return true; };											// 是否為敵人

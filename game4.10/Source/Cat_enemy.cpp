@@ -17,6 +17,8 @@ namespace game_framework {
 		this->defancePoint = defence;
 		this->attackPoint = attack;
 		this->is_enemy = 1;
+		SetXY(150, 220);
+		LoadBitmap();
 	}
 
 	Cat_enemy::~Cat_enemy() {
@@ -36,7 +38,8 @@ namespace game_framework {
 	}
 
 	void Cat_enemy::SetXY(int x, int y) {
-
+		this->x = x;
+		this->y = y;
 	}
 
 	void Cat_enemy::SetIsAlive(bool alive) {
@@ -56,15 +59,15 @@ namespace game_framework {
 	}
 
 	void Cat_enemy::OnMove() {
-
+		this->x = this->x + 1;
 	}
 
 	void Cat_enemy::LoadBitmap() {
-		bmp.LoadBitmapA(IDB_E_DOG_WALK_0);
+		bmp.LoadBitmap(IDB_E_DOG_WALK_0, RGB(255, 0, 0));
 	}
 
 	void Cat_enemy::OnShow() {
-		bmp.SetTopLeft(150, 250);
+		bmp.SetTopLeft(x, y);
 		bmp.ShowBitmap();
 	}
 }

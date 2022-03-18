@@ -44,6 +44,8 @@
 #include "Tower_enemy.h"
 #include "Tower_friend.h"
 #include "Cat.h"
+#include "Cat_enemy.h"
+#include "Cat_friend.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -102,7 +104,7 @@ namespace game_framework {
 		CMovingBitmap	background;	// ­I´º¹Ï
 		Tower_enemy tower_enemy;
 		Tower_friend tower_friend;
-		vector<Cat> cat_enemy;
+		vector<Cat*> cat_enemy;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
