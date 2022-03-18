@@ -114,6 +114,10 @@ IDB_TOWER1              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\ga
 
 IDB_TOWER2              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\tower2.bmp"
 
+IDB_UPGRADE_BLACK       BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\upgrade.bmp"
+
+IDB_UPGRADE             BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\upgrade_black.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

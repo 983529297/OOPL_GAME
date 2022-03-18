@@ -339,6 +339,8 @@
     <Image Include="RES\start.bmp" />
     <Image Include="RES\tower1.bmp" />
     <Image Include="RES\tower2.bmp" />
+    <Image Include="RES\upgrade.bmp" />
+    <Image Include="RES\upgrade_black.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
