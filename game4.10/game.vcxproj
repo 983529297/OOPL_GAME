@@ -334,11 +334,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\cats\picture\dog\act1.bmp" />
     <Image Include="RES\back1.bmp" />
+    <Image Include="res\e_dog_ac.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\start.bmp" />
-    <Image Include="RES\tower1.bmp" />
-    <Image Include="RES\tower2.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
