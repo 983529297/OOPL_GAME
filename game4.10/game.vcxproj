@@ -334,6 +334,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\oopl\cats\picture\dog\act1.bmp" />
     <Image Include="RES\back1.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\start.bmp" />
