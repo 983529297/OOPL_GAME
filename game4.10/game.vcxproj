@@ -334,12 +334,22 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Image Include="..\..\oopl\cats\picture\dog\act1.bmp" />
+=======
+    <Image Include="..\..\cats\picture\dog\act1.bmp" />
+>>>>>>> c636b86135b04145f067101e77b0dcd06c288c6b
     <Image Include="RES\back1.bmp" />
+    <Image Include="res\e_dog_ac.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\start.bmp" />
+<<<<<<< HEAD
     <Image Include="RES\tower1.bmp" />
     <Image Include="RES\tower2.bmp" />
+    <Image Include="RES\upgrade.bmp" />
+    <Image Include="RES\upgrade_black.bmp" />
+=======
+>>>>>>> bb64664b749e359c100b2097a62d98d52d6f8517
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
