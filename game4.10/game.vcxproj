@@ -335,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="RES\back1.bmp" />
+    <Image Include="RES\e_dog_walk_0.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\start.bmp" />
     <Image Include="RES\tower1.bmp" />

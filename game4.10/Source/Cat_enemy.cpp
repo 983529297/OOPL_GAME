@@ -23,7 +23,48 @@ namespace game_framework {
 
 	}
 
+	bool Cat_enemy::IsHit() {
+		return true;
+	}
+
+	bool Cat_enemy::IsAlive() {
+		return true;
+	}
+
+	bool Cat_enemy::IsEnemy() {
+		return true;
+	}
+
+	void Cat_enemy::SetXY(int x, int y) {
+
+	}
+
+	void Cat_enemy::SetIsAlive(bool alive) {
+
+	}
+
+	void Cat_enemy::SetBlood(int blood) {
+
+	}
+
+	void Cat_enemy::Attack(Cat cat) {
+
+	}
+
 	void Cat_enemy::BeAttack(int attack) {
 		this->blood = this->blood - attack;
+	}
+
+	void Cat_enemy::OnMove() {
+
+	}
+
+	void Cat_enemy::LoadBitmap() {
+		bmp.LoadBitmapA(IDB_E_DOG_WALK_0);
+	}
+
+	void Cat_enemy::OnShow() {
+		bmp.SetTopLeft(150, 250);
+		bmp.ShowBitmap();
 	}
 }

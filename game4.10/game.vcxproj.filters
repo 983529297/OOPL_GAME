@@ -222,5 +222,8 @@
     <Image Include="RES\tower2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\e_dog_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

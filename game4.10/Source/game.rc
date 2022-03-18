@@ -114,6 +114,7 @@ IDB_TOWER1              BITMAP                  "..\\RES\\tower1.bmp"
 
 IDB_TOWER2              BITMAP                  "..\\RES\\tower2.bmp"
 
+IDB_E_DOG_WALK_0        BITMAP                  "..\\RES\\e_dog_walk_0.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

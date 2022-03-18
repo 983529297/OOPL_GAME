@@ -5,16 +5,16 @@ namespace game_framework {
 	public:
 		Cat() {};
 		~Cat() {};
-		bool IsHit();											// 是否遇到敵人
-		bool IsAlive();											// 是否活著
-		bool IsEnemy();											// 是否為敵人
-		void LoadBitmap();										// 載入圖形
-		void OnMove();											// 移動
-		void OnShow();											// 將圖形貼到畫面
-		void SetXY(int nx, int ny);								// 設定圓心的座標
-		void SetIsAlive(bool alive);							// 設定是否活著
-		void SetBlood(int attackCount);							// 扣血
-		void Attack(Cat cat);									// 攻擊
+		virtual bool IsHit() { return true; };											// 是否遇到敵人
+		virtual bool IsAlive() { return true; };											// 是否活著
+		virtual bool IsEnemy() { return true; };											// 是否為敵人
+		virtual void LoadBitmap() {};										// 載入圖形
+		virtual void OnMove() {};											// 移動
+		virtual void OnShow() {};											// 將圖形貼到畫面
+		virtual void SetXY(int nx, int ny) {};								// 設定圓心的座標
+		virtual void SetIsAlive(bool alive) {};							// 設定是否活著
+		virtual void SetBlood(int attackCount) {};							// 扣血
+		virtual void Attack(Cat cat) {};									// 攻擊
 		virtual void BeAttack(int attack) {};
 
 	protected:
