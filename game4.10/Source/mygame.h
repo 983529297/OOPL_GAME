@@ -102,6 +102,11 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CMovingBitmap	background;	// 背景圖
+		CMovingBitmap	upgrade;
+		CMovingBitmap	upgrade_black;
+		CMovingBitmap	empty_block;
+		CInteger callPoint;
+		CInteger callPointTotal;
 		Tower_enemy tower_enemy;
 		Tower_friend tower_friend;
 		vector<Cat*> cat_enemy;

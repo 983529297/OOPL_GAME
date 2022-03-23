@@ -225,5 +225,14 @@
     <Image Include="RES\e_dog_walk_0.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\upgrade.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\upgrade_black.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\empty_block.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

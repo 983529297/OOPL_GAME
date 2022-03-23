@@ -3,7 +3,7 @@ namespace game_framework {
 	class Cat_enemy : public Cat
 	{
 	public:
-		Cat_enemy(string name, int blood, int attack, int defence);
+		Cat_enemy(string name, int blood, int attack, int defence, int speed);
 		~Cat_enemy();
 		bool IsHit();// override;											// 是否遇到敵人
 		bool IsAlive();// override;											// 是否活著
@@ -24,6 +24,7 @@ namespace game_framework {
 		int attackPoint;
 		int blood;
 		int defancePoint;
+		int speedPoint;
 		bool is_alive;				// 是否活著
 		bool is_enemy;				// 是否敵人
 		string name;

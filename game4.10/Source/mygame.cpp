@@ -208,18 +208,22 @@ CGameStateRun::CGameStateRun(CGame *g)
 
 CGameStateRun::~CGameStateRun()
 {
-	cat_enemy.clear();
+	if (!cat_enemy.empty())
+	{
+		for (int i = 0; i < (int)cat_enemy.size(); i++) {
+			delete cat_enemy[i];
+		}
+		cat_enemy.clear();
+	}
 }
 
 void CGameStateRun::OnBeginState()
 {
-	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100));
-	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100));
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
-	
+	callPoint.Add(1);
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -232,24 +236,25 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	background.LoadBitmap(IDB_BACK1);					// 載入背景的圖形
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
+	upgrade.LoadBitmap(IDB_UPGRADE, (0, 0, 255));
+	upgrade_black.LoadBitmap(IDB_UPGRADE_BLACK, (0, 0, 255));
+	empty_block.LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
+	callPoint.LoadBitmap();
+	//callPointTotal.LoadBitmap();
+	callPoint.SetInteger(0);
+	callPoint.SetTopLeft(500, 0);
 	ShowInitProgress(50);
 	Sleep(300);
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	if (!cat_enemy.empty())
-	{
-		for each (Cat* var in cat_enemy)
-		{
-			delete var;
-		}
-		cat_enemy.clear();
-	}
+	
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
+	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100, 255));
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -280,9 +285,16 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 void CGameStateRun::OnShow()
 {
 	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
+	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
+	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
+	empty_block.SetTopLeft(370, 600);
 	background.ShowBitmap();
+	empty_block.ShowBitmap();
 	tower_friend.OnShow();
 	tower_enemy.OnShow();
+	upgrade.ShowBitmap();
+	callPoint.ShowBitmap();
+	upgrade_black.ShowBitmap();
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
 		cat_enemy[i]->OnMove();
 		cat_enemy[i]->OnShow();

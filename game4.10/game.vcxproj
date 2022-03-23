@@ -335,11 +335,14 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="RES\back1.bmp" />
+    <Image Include="RES\empty_block.bmp" />
     <Image Include="RES\e_dog_walk_0.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\start.bmp" />
     <Image Include="RES\tower1.bmp" />
     <Image Include="RES\tower2.bmp" />
+    <Image Include="RES\upgrade.bmp" />
+    <Image Include="RES\upgrade_black.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

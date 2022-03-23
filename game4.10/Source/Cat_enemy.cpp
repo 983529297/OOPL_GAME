@@ -7,17 +7,16 @@
 #include "Cat.h"
 #include "Cat_enemy.h"
 
-
-
 namespace game_framework {
 
-	Cat_enemy::Cat_enemy(string name, int blood, int attack, int defence) {
+	Cat_enemy::Cat_enemy(string name, int blood, int attack, int defence, int speed) {
 		this->name = name;
 		this->blood = blood;
 		this->defancePoint = defence;
 		this->attackPoint = attack;
 		this->is_enemy = 1;
-		SetXY(150, 220);
+		this->speedPoint = speed;
+		SetXY(130, 430);
 		LoadBitmap();
 	}
 
