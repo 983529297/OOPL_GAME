@@ -49,7 +49,7 @@ namespace game_framework {
 
 	}
 
-	void Cat_enemy::Attack(Cat cat) {
+	void Cat_enemy::Attack(Cat *cat) {
 
 	}
 

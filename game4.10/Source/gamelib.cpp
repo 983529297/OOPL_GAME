@@ -240,7 +240,7 @@ int CAnimation::Width()
 // 2. 自己寫到運用CMovingBitmap的程式時，可以參考下列程式的寫法
 /////////////////////////////////////////////////////////////////////////////
 
-CMovingBitmap CInteger::digit[11];
+//CMovingBitmap CInteger::digit[11];
 
 CInteger::CInteger(int digits)
 : NUMDIGITS(digits)
@@ -264,9 +264,9 @@ void CInteger::LoadBitmap()
 	// digit[i]為class varibale，所以必須避免重複LoadBitmap
 	//
 	if (!isBmpLoaded) {
-		int d[11]={IDB_0,IDB_1,IDB_2,IDB_3,IDB_4,IDB_5,IDB_6,IDB_7,IDB_8,IDB_9,IDB_MINUS};
+		int d[11]={IDB_0_N,IDB_1_N,IDB_2_N,IDB_3_N,IDB_4_N,IDB_5_N,IDB_6_N,IDB_7_N,IDB_8_N,IDB_9_N,IDB_MINUS};
 		for (int i=0; i < 11; i++)
-			digit[i].LoadBitmap(d[i],RGB(255,255,255));
+			digit[i].LoadBitmap(d[i],RGB(255, 0, 0));
 		isBmpLoaded = true;
 	}
 }

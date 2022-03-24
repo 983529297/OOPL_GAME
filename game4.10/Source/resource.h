@@ -47,8 +47,19 @@
 #define IDB_E_DOG_WALK_0                168
 #define IDB_UPGRADE                     169
 #define IDB_UPGRADE_BLACK               170
-#define IDB_BITMAP6                     171
 #define IDB_EMPTY_BLOCK                 171
+#define IDB_0_N                         172
+#define IDB_1_N                         173
+#define IDB_2_N                         174
+#define IDB_3_N                         175
+#define IDB_4_N                         176
+#define IDB_5_N                         177
+#define IDB_6_N                         178
+#define IDB_7_N                         179
+#define IDB_8_N                         180
+#define IDB_9_N                         181
+#define IDB_BITMAP6                     182
+#define IDB_SLASH                       182
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -61,7 +72,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        172
+#define _APS_NEXT_RESOURCE_VALUE        183
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

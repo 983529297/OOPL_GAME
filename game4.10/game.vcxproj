@@ -334,10 +334,21 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="RES\0.bmp" />
+    <Image Include="RES\1.bmp" />
+    <Image Include="RES\2.bmp" />
+    <Image Include="RES\3.bmp" />
+    <Image Include="RES\4.bmp" />
+    <Image Include="RES\5.bmp" />
+    <Image Include="RES\6.bmp" />
+    <Image Include="RES\7.bmp" />
+    <Image Include="RES\8.bmp" />
+    <Image Include="RES\9.bmp" />
     <Image Include="RES\back1.bmp" />
     <Image Include="RES\empty_block.bmp" />
     <Image Include="RES\e_dog_walk_0.bmp" />
     <Image Include="RES\opend.bmp" />
+    <Image Include="RES\slash.bmp" />
     <Image Include="RES\start.bmp" />
     <Image Include="RES\tower1.bmp" />
     <Image Include="RES\tower2.bmp" />

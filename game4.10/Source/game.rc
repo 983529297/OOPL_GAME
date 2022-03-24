@@ -122,6 +122,28 @@ IDB_UPGRADE_BLACK       BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\ga
 
 IDB_EMPTY_BLOCK         BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\empty_block.bmp"
 
+IDB_0_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\0.bmp"
+
+IDB_1_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\1.bmp"
+
+IDB_2_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\2.bmp"
+
+IDB_3_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\3.bmp"
+
+IDB_4_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\4.bmp"
+
+IDB_5_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\5.bmp"
+
+IDB_6_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\6.bmp"
+
+IDB_7_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\7.bmp"
+
+IDB_8_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\8.bmp"
+
+IDB_9_N                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\9.bmp"
+
+IDB_SLASH               BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\slash.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

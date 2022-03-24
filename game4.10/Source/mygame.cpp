@@ -80,12 +80,13 @@ void CGameStateInit::OnInit()
 	// 開始載入資料
 	//
 	logo.LoadBitmap(IDB_OPEND);
-	start.LoadBitmap(IDB_START);
+	start.LoadBitmap(IDB_START, (0, 0, 255));
+	start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
 	start_size = 0.81;
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
+	ready = true;
 }
 
 void CGameStateInit::OnBeginState()
@@ -104,44 +105,29 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	if (0 < point.x && point.x < 100 && 0 < point.y && point.y < 100)
-		start_size = 0.9;
-	else
-		start_size = 0.81;
+	if (ready) {
+		if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height()) {
+			start_size = 0.9;
+			start.SetTopLeft(SIZE_X / 2 - 205, 390);//SIZE_Y/8);
+		}
+		else {
+			start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
+			start_size = 0.81;
+		}
+	}
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height())
+		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 }
 
 void CGameStateInit::OnShow()
 {
-	//
-	// 貼上logo
-	//
 	logo.SetTopLeft((SIZE_X - logo.Width()) / 2, 0);//SIZE_Y/8);
-	start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
-	
 	logo.ShowBitmap();
 	start.ShowBitmap(start_size);
-	//
-	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
-	//
-
-	/*CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	//pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
-	pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
-	if (ENABLE_GAME_PAUSE)
-		pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
-	pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC*/
 }								
 
 /////////////////////////////////////////////////////////////////////////////
@@ -175,7 +161,6 @@ void CGameStateOver::OnInit()
 	//
 	// 開始載入資料
 	//
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 最終進度為100%
 	//
@@ -224,6 +209,9 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	callPoint.Add(1);
+	for (int i = 0; i < (int)cat_enemy.size(); i++) {
+		cat_enemy[i]->OnMove();
+	}
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -236,15 +224,19 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	background.LoadBitmap(IDB_BACK1);					// 載入背景的圖形
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
+	slash.LoadBitmap(IDB_SLASH, (0, 0, 255));
 	upgrade.LoadBitmap(IDB_UPGRADE, (0, 0, 255));
 	upgrade_black.LoadBitmap(IDB_UPGRADE_BLACK, (0, 0, 255));
-	empty_block.LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
+	for (int i = 0; i < 5; i++)
+		empty_block[i].LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
 	callPoint.LoadBitmap();
-	//callPointTotal.LoadBitmap();
+	callPointTotal.LoadBitmap();
 	callPoint.SetInteger(0);
-	callPoint.SetTopLeft(500, 0);
+	callPoint.SetTopLeft(820, 0);
+	callPointTotal.SetInteger(500);
+	callPointTotal.SetTopLeft(1000, 0);
+	slash.SetTopLeft(970, 5);
 	ShowInitProgress(50);
-	Sleep(300);
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -287,16 +279,20 @@ void CGameStateRun::OnShow()
 	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
 	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
 	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
-	empty_block.SetTopLeft(370, 600);
 	background.ShowBitmap();
-	empty_block.ShowBitmap();
+	for (int i = 0; i < 5; i++) {
+		empty_block[i].SetTopLeft(330 + 160 * i, 600);
+		empty_block[i].ShowBitmap();
+	}
 	tower_friend.OnShow();
 	tower_enemy.OnShow();
 	upgrade.ShowBitmap();
 	callPoint.ShowBitmap();
+	callPointTotal.ShowBitmap();
 	upgrade_black.ShowBitmap();
+	slash.ShowBitmap(1.2);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		cat_enemy[i]->OnMove();
+		//cat_enemy[i]->OnMove();
 		cat_enemy[i]->OnShow();
 	}
 }

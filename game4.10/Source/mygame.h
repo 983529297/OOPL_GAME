@@ -74,6 +74,7 @@ namespace game_framework {
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
+		bool ready = false;
 		double start_size;
 		CMovingBitmap logo;								// csie的logo
 		CMovingBitmap start;								// csie的logo
@@ -104,7 +105,8 @@ namespace game_framework {
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	upgrade;
 		CMovingBitmap	upgrade_black;
-		CMovingBitmap	empty_block;
+		CMovingBitmap	empty_block[5];
+		CMovingBitmap	slash;
 		CInteger callPoint;
 		CInteger callPointTotal;
 		Tower_enemy tower_enemy;
