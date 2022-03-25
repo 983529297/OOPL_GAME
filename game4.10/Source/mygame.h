@@ -112,6 +112,7 @@ namespace game_framework {
 		Tower_enemy tower_enemy;
 		Tower_friend tower_friend;
 		vector<Cat*> cat_enemy;
+		vector<Cat*> cat_friend;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
