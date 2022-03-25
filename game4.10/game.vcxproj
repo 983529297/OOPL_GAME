@@ -346,7 +346,16 @@
     <Image Include="RES\9.bmp" />
     <Image Include="RES\back1.bmp" />
     <Image Include="RES\empty_block.bmp" />
+    <Image Include="RES\e_dog_knockback.bmp" />
     <Image Include="RES\e_dog_walk_0.bmp" />
+    <Image Include="RES\e_dog_walk_1.bmp" />
+    <Image Include="RES\e_dog_walk_2.bmp" />
+    <Image Include="RES\f_marshmellow_hit_0.bmp" />
+    <Image Include="RES\f_marshmellow_hit_1.bmp" />
+    <Image Include="RES\f_marshmellow_hit_2.bmp" />
+    <Image Include="RES\f_marshmellow_walk_0.bmp" />
+    <Image Include="RES\f_marshmellow_walk_1.bmp" />
+    <Image Include="RES\f_marshmellow_walk_2.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\slash.bmp" />
     <Image Include="RES\start.bmp" />
