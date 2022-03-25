@@ -267,5 +267,32 @@
     <Image Include="RES\slash.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\e_dog_knockback.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\e_dog_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\e_dog_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_hit_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_hit_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_hit_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\f_marshmellow_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

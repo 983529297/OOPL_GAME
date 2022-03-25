@@ -59,14 +59,17 @@ namespace game_framework {
 
 	void Cat_enemy::OnMove() {
 		this->x = this->x + 1;
+		animation.OnMove();
 	}
 
 	void Cat_enemy::LoadBitmap() {
-		bmp.LoadBitmap(IDB_E_DOG_WALK_0, RGB(255, 0, 0));
+		char* filename[3] = { ".\\res\\e_dog_walk_0.bmp",".\\res\\e_dog_walk_1.bmp",".\\res\\e_dog_walk_2.bmp" };
+		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
+			animation.AddBitmap(filename[i], RGB(255, 0, 0));
 	}
 
 	void Cat_enemy::OnShow() {
-		bmp.SetTopLeft(x, y);
-		bmp.ShowBitmap();
+		animation.SetTopLeft(x, y);
+		animation.OnShow();
 	}
 }

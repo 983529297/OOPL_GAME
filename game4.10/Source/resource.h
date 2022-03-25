@@ -58,8 +58,17 @@
 #define IDB_7_N                         179
 #define IDB_8_N                         180
 #define IDB_9_N                         181
-#define IDB_BITMAP6                     182
 #define IDB_SLASH                       182
+#define IDB_BITMAP6                     183
+#define IDB_E_DOG_WALK_1                184
+#define IDB_BITMAP9                     185
+#define IDB_E_DOG_WALK_2                185
+#define IDB_F_MARSHMELLOW_HIT_0         186
+#define IDB_F_MARSHMELLOW_HIT_1         187
+#define IDB_F_MARSHMELLOW_HIT_2         188
+#define IDB_F_MARSHMELLOW_WALK_0        189
+#define IDB_F_MARSHMELLOW_WALK_1        190
+#define IDB_F_MARSHMELLOW_WALK_2        191
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -72,7 +81,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        183
+#define _APS_NEXT_RESOURCE_VALUE        192
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
