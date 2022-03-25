@@ -11,7 +11,8 @@ namespace game_framework {
 		void LoadBitmap_Walk() override;										// 載入圖形
 		void LoadBitmap_Attack() override;										// 載入圖形
 		void OnMove() override;											// 移動
-		void OnShow() override;											// 將圖形貼到畫面
+		void OnShow_Walk() override;											// 將圖形貼到畫面
+		void OnShow_Attack() override;											// 將圖形貼到畫面
 		void SetXY(int nx, int ny) override;								// 設定圓心的座標
 		void SetIsAlive(bool alive) override;							// 設定是否活著
 		void SetBlood(int attackCount) override;							// 扣血
@@ -19,6 +20,7 @@ namespace game_framework {
 		int Attack() override;
 		bool isThere(int x) override;
 		int GetAttackRange() override;
+		bool GetIsAttack() override;
 
 	protected:
 
@@ -30,10 +32,12 @@ namespace game_framework {
 		int speedPoint;
 		bool is_alive;				// 是否活著
 		bool is_enemy;				// 是否敵人
+		bool is_attack;				// 是否敵人
 		int hit_box;
 		int attack_range;
 		POINT center;
 		string name;
-		CAnimation animation;
+		CAnimation animation_walk;
+		CAnimation animation_attack;
 	};
 }

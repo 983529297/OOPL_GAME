@@ -18,8 +18,10 @@ namespace game_framework {
 		this->speedPoint = speed;
 		SetXY(950, 430);
 		LoadBitmap_Walk();
-		center.x = this->x + animation.Width() / 2;
-		center.y = this->y + animation.Height() / 2;
+		LoadBitmap_Attack();
+		center.x = this->x + animation_walk.Width() / 2;
+		center.y = this->y + animation_walk.Height() / 2;
+		this->hit_box = this->center.x + animation_walk.Width() / 2;
 		this->attack_range = this->x - 50;
 	}
 
@@ -53,14 +55,22 @@ namespace game_framework {
 	}
 
 	bool Cat_friend::isThere(int x) {
-		if (x > this->hit_box)
+		if (x > this->hit_box) {
+			this->is_attack = true;
 			return true;
-		else
+		}
+		else {
+			this->is_attack = false;
 			return false;
+		}
 	}
 
 	int Cat_friend::GetAttackRange() {
-		return hit_box;
+		return this->hit_box;
+	}
+
+	bool Cat_friend::GetIsAttack() {
+		return this->is_attack;
 	}
 
 	void Cat_friend::BeAttack(int attack) {
@@ -72,25 +82,35 @@ namespace game_framework {
 	}
 
 	void Cat_friend::OnMove() {
-		this->center.x = this->center.x -1;
-		animation.OnMove();
-		this->hit_box = this->center.x - animation.Width() / 2;
+		
+		if (!is_attack) {
+			animation_walk.OnMove();
+			this->center.x = this->center.x - this->speedPoint;
+		}
+		else
+			animation_attack.OnMove();
+		this->hit_box = this->center.x - animation_walk.Width() / 2;
 	}
 
 	void Cat_friend::LoadBitmap_Walk() {
 		char* filename[3] = { ".\\res\\f_marshmellow_walk_0.bmp",".\\res\\f_marshmellow_walk_1.bmp",".\\res\\f_marshmellow_walk_2.bmp" };
 		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
-			animation.AddBitmap(filename[i], RGB(236, 28, 36));
+			animation_walk.AddBitmap(filename[i], RGB(236, 28, 36));
 	}
 
 	void Cat_friend::LoadBitmap_Attack() {
 		char* filename[3] = { ".\\res\\f_marshmellow_hit_0.bmp",".\\res\\f_marshmellow_hit_1.bmp",".\\res\\f_marshmellow_hit_2.bmp" };
 		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
-			animation.AddBitmap(filename[i], RGB(236, 28, 36));
+			animation_attack.AddBitmap(filename[i], RGB(236, 28, 36));
 	}
 
-	void Cat_friend::OnShow() {
-		animation.SetTopLeft(center.x - animation.Width() / 2, center.y - animation.Height() / 2);
-		animation.OnShow();
+	void Cat_friend::OnShow_Walk() {
+		animation_walk.SetTopLeft(center.x - animation_walk.Width() / 2, center.y - animation_walk.Height() / 2);
+		animation_walk.OnShow();
+	}
+
+	void Cat_friend::OnShow_Attack() {
+		animation_attack.SetTopLeft(center.x - animation_attack.Width() / 2, center.y - animation_attack.Height() / 2);
+		animation_attack.OnShow();
 	}
 }
