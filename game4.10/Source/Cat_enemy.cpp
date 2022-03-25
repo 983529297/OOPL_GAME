@@ -18,6 +18,9 @@ namespace game_framework {
 		this->speedPoint = speed;
 		SetXY(130, 430);
 		LoadBitmap();
+		center.x = this->x + animation.Width() / 2;
+		center.y = this->y + animation.Height() / 2;
+		this->attack_range = this->x + 50;
 	}
 
 	Cat_enemy::~Cat_enemy() {
@@ -49,17 +52,22 @@ namespace game_framework {
 
 	}
 
-	void Cat_enemy::Attack(Cat *cat) {
-
+	bool Cat_enemy::isThere(int x) {
+		if (x < this->hit_box)
+			return true;
+		else
+			return false;
 	}
+
 
 	void Cat_enemy::BeAttack(int attack) {
 		this->blood = this->blood - attack;
 	}
 
 	void Cat_enemy::OnMove() {
-		this->x = this->x + 1;
+		this->center.x = this->center.x + 1;
 		animation.OnMove();
+		this->hit_box = this->center.x + animation.Width() / 2;
 	}
 
 	void Cat_enemy::LoadBitmap() {
@@ -69,7 +77,7 @@ namespace game_framework {
 	}
 
 	void Cat_enemy::OnShow() {
-		animation.SetTopLeft(x, y);
+		animation.SetTopLeft(center.x - animation.Width() / 2, center.y - animation.Height() / 2);
 		animation.OnShow();
 	}
 }

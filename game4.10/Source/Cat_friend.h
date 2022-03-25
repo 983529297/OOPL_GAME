@@ -15,7 +15,7 @@ namespace game_framework {
 		void SetIsAlive(bool alive) override;							// 設定是否活著
 		void SetBlood(int attackCount) override;							// 扣血
 		void BeAttack(int attack) override;
-		void Attack(Cat* cat) override;									// 攻擊
+		bool isThere(int x) override;
 
 	protected:
 
@@ -27,6 +27,9 @@ namespace game_framework {
 		int speedPoint;
 		bool is_alive;				// 是否活著
 		bool is_enemy;				// 是否敵人
+		int hit_box;
+		int attack_range;
+		POINT center;
 		string name;
 		CAnimation animation;
 	};

@@ -16,8 +16,11 @@ namespace game_framework {
 		this->attackPoint = attack;
 		this->is_enemy = 1;
 		this->speedPoint = speed;
-		SetXY(900, 430);
+		SetXY(950, 430);
 		LoadBitmap();
+		center.x = this->x + animation.Width() / 2;
+		center.y = this->y + animation.Height() / 2;
+		this->attack_range = this->x + 50;
 	}
 
 	Cat_friend::~Cat_friend() {
@@ -49,8 +52,11 @@ namespace game_framework {
 
 	}
 
-	void Cat_friend::Attack(Cat* cat) {
-
+	bool Cat_friend::isThere(int x) {
+		if (x > this->hit_box)
+			return true;
+		else
+			return false;
 	}
 
 	void Cat_friend::BeAttack(int attack) {
@@ -58,8 +64,9 @@ namespace game_framework {
 	}
 
 	void Cat_friend::OnMove() {
-		this->x = this->x - 1;
+		this->center.x = this->center.x -1;
 		animation.OnMove();
+		this->hit_box = this->center.x + animation.Width() / 2;
 	}
 
 	void Cat_friend::LoadBitmap() {
@@ -69,7 +76,7 @@ namespace game_framework {
 	}
 
 	void Cat_friend::OnShow() {
-		animation.SetTopLeft(x, y);
+		animation.SetTopLeft(center.x - animation.Width() / 2, center.y - animation.Height() / 2);
 		animation.OnShow();
 	}
 }

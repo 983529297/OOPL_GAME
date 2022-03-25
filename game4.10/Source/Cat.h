@@ -14,8 +14,8 @@ namespace game_framework {
 		virtual void SetXY(int nx, int ny) {};								// 設定圓心的座標
 		virtual void SetIsAlive(bool alive) {};							// 設定是否活著
 		virtual void SetBlood(int attackCount) {};							// 扣血
-		virtual void Attack(Cat *cat) {};									// 攻擊
 		virtual void BeAttack(int attack) {};
+		virtual bool isThere(int x) { return true; };
 
 	protected:
 

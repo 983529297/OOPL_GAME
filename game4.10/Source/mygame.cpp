@@ -226,12 +226,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
-	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
-	background.LoadBitmap(IDB_BACK1);					// 載入背景的圖形
+	ShowInitProgress(33);
+	background.LoadBitmap(IDB_BACK1);
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
 	slash.LoadBitmap(IDB_SLASH, (0, 0, 255));
@@ -303,11 +299,9 @@ void CGameStateRun::OnShow()
 	upgrade_black.ShowBitmap();
 	slash.ShowBitmap(1.2);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		//cat_enemy[i]->OnMove();
 		cat_enemy[i]->OnShow();
 	}
 	for (int i = 0; i < (int)cat_friend.size(); i++) {
-		//cat_enemy[i]->OnMove();
 		cat_friend[i]->OnShow();
 	}
 }
