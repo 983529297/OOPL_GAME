@@ -294,5 +294,35 @@
     <Image Include="RES\f_marshmellow_walk_2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\t0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\t9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
