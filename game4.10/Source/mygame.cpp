@@ -200,6 +200,13 @@ CGameStateRun::~CGameStateRun()
 		}
 		cat_enemy.clear();
 	}
+	if (!cat_friend.empty())
+	{
+		for (int i = 0; i < (int)cat_friend.size(); i++) {
+			delete cat_friend[i];
+		}
+		cat_friend.clear();
+	}
 }
 
 void CGameStateRun::OnBeginState()
@@ -211,6 +218,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	callPoint.Add(1);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
 		cat_enemy[i]->OnMove();
+	}
+	for (int i = 0; i < (int)cat_friend.size(); i++) {
+		cat_friend[i]->OnMove();
 	}
 }
 
@@ -247,6 +257,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100, 255));
+	cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 255));
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -294,6 +305,10 @@ void CGameStateRun::OnShow()
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
 		//cat_enemy[i]->OnMove();
 		cat_enemy[i]->OnShow();
+	}
+	for (int i = 0; i < (int)cat_friend.size(); i++) {
+		//cat_enemy[i]->OnMove();
+		cat_friend[i]->OnShow();
 	}
 }
 }
