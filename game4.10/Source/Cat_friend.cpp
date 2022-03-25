@@ -17,10 +17,10 @@ namespace game_framework {
 		this->is_enemy = 1;
 		this->speedPoint = speed;
 		SetXY(950, 430);
-		LoadBitmap();
+		LoadBitmap_Walk();
 		center.x = this->x + animation.Width() / 2;
 		center.y = this->y + animation.Height() / 2;
-		this->attack_range = this->x + 50;
+		this->attack_range = this->x - 50;
 	}
 
 	Cat_friend::~Cat_friend() {
@@ -59,18 +59,32 @@ namespace game_framework {
 			return false;
 	}
 
+	int Cat_friend::GetAttackRange() {
+		return hit_box;
+	}
+
 	void Cat_friend::BeAttack(int attack) {
 		this->blood = this->blood - attack;
+	}
+
+	int Cat_friend::Attack() {
+		return attackPoint;
 	}
 
 	void Cat_friend::OnMove() {
 		this->center.x = this->center.x -1;
 		animation.OnMove();
-		this->hit_box = this->center.x + animation.Width() / 2;
+		this->hit_box = this->center.x - animation.Width() / 2;
 	}
 
-	void Cat_friend::LoadBitmap() {
+	void Cat_friend::LoadBitmap_Walk() {
 		char* filename[3] = { ".\\res\\f_marshmellow_walk_0.bmp",".\\res\\f_marshmellow_walk_1.bmp",".\\res\\f_marshmellow_walk_2.bmp" };
+		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
+			animation.AddBitmap(filename[i], RGB(236, 28, 36));
+	}
+
+	void Cat_friend::LoadBitmap_Attack() {
+		char* filename[3] = { ".\\res\\f_marshmellow_hit_0.bmp",".\\res\\f_marshmellow_hit_1.bmp",".\\res\\f_marshmellow_hit_2.bmp" };
 		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
 			animation.AddBitmap(filename[i], RGB(236, 28, 36));
 	}

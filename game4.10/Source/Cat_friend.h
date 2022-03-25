@@ -8,14 +8,17 @@ namespace game_framework {
 		bool IsHit() override;											// 是否遇到敵人
 		bool IsAlive() override;											// 是否活著
 		bool IsEnemy() override;											// 是否為敵人
-		void LoadBitmap() override;										// 載入圖形
+		void LoadBitmap_Walk() override;										// 載入圖形
+		void LoadBitmap_Attack() override;										// 載入圖形
 		void OnMove() override;											// 移動
 		void OnShow() override;											// 將圖形貼到畫面
 		void SetXY(int nx, int ny) override;								// 設定圓心的座標
 		void SetIsAlive(bool alive) override;							// 設定是否活著
 		void SetBlood(int attackCount) override;							// 扣血
 		void BeAttack(int attack) override;
+		int Attack() override;
 		bool isThere(int x) override;
+		int GetAttackRange() override;
 
 	protected:
 

@@ -217,7 +217,8 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 {
 	callPoint.Add(1);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		cat_enemy[i]->OnMove();
+		if (!cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange()))
+			cat_enemy[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
 	}
 	for (int i = 0; i < (int)cat_friend.size(); i++) {
 		cat_friend[i]->OnMove();

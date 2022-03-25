@@ -17,7 +17,7 @@ namespace game_framework {
 		this->is_enemy = 1;
 		this->speedPoint = speed;
 		SetXY(130, 430);
-		LoadBitmap();
+		LoadBitmap_Walk();
 		center.x = this->x + animation.Width() / 2;
 		center.y = this->y + animation.Height() / 2;
 		this->attack_range = this->x + 50;
@@ -64,13 +64,23 @@ namespace game_framework {
 		this->blood = this->blood - attack;
 	}
 
+	int Cat_enemy::Attack() {
+		return this->attackPoint;
+	}
+
 	void Cat_enemy::OnMove() {
 		this->center.x = this->center.x + 1;
 		animation.OnMove();
 		this->hit_box = this->center.x + animation.Width() / 2;
 	}
 
-	void Cat_enemy::LoadBitmap() {
+	void Cat_enemy::LoadBitmap_Walk() {
+		char* filename[3] = { ".\\res\\e_dog_walk_0.bmp",".\\res\\e_dog_walk_1.bmp",".\\res\\e_dog_walk_2.bmp" };
+		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
+			animation.AddBitmap(filename[i], RGB(255, 0, 0));
+	}
+
+	void Cat_enemy::LoadBitmap_Walk() {
 		char* filename[3] = { ".\\res\\e_dog_walk_0.bmp",".\\res\\e_dog_walk_1.bmp",".\\res\\e_dog_walk_2.bmp" };
 		for (int i = 0; i < 3; i++)	// 載入動畫(由4張圖形構成)
 			animation.AddBitmap(filename[i], RGB(255, 0, 0));
