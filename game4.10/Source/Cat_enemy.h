@@ -29,5 +29,6 @@ namespace game_framework {
 		bool is_enemy;				// ¬O§_¼Ä¤H
 		string name;
 		CMovingBitmap bmp;
+		CAnimation animation;
 	};
 }
