@@ -162,6 +162,26 @@ IDB_F_MARSHMELLOW_WALK_1 BITMAP                  "..\\RES\\f_marshmellow_walk_1.
 
 IDB_F_MARSHMELLOW_WALK_2 BITMAP                  "..\\RES\\f_marshmellow_walk_2.bmp"
 
+IDB_0_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t0.bmp"
+
+IDB_1_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t1.bmp"
+
+IDB_2_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t2.bmp"
+
+IDB_3_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t3.bmp"
+
+IDB_4_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t4.bmp"
+
+IDB_5_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t5.bmp"
+
+IDB_6_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t6.bmp"
+
+IDB_7_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t7.bmp"
+
+IDB_8_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t8.bmp"
+
+IDB_9_T                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\t9.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

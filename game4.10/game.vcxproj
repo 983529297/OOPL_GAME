@@ -359,6 +359,16 @@
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\slash.bmp" />
     <Image Include="RES\start.bmp" />
+    <Image Include="RES\t0.bmp" />
+    <Image Include="RES\t1.bmp" />
+    <Image Include="RES\t2.bmp" />
+    <Image Include="RES\t3.bmp" />
+    <Image Include="RES\t4.bmp" />
+    <Image Include="RES\t5.bmp" />
+    <Image Include="RES\t6.bmp" />
+    <Image Include="RES\t7.bmp" />
+    <Image Include="RES\t8.bmp" />
+    <Image Include="RES\t9.bmp" />
     <Image Include="RES\tower1.bmp" />
     <Image Include="RES\tower2.bmp" />
     <Image Include="RES\upgrade.bmp" />

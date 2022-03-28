@@ -217,21 +217,19 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	callPoint.Add(1);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		cat_enemy[i]->OnMove();
+		cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange());
+		cat_enemy[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
 	}
 	for (int i = 0; i < (int)cat_friend.size(); i++) {
-		cat_friend[i]->OnMove();
+		cat_friend[i]->isThere(cat_enemy[0]->GetAttackRange());
+		cat_friend[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
 	}
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
-	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
-	background.LoadBitmap(IDB_BACK1);					// 載入背景的圖形
+	ShowInitProgress(33);
+	background.LoadBitmap(IDB_BACK1);
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
 	slash.LoadBitmap(IDB_SLASH, (0, 0, 255));
@@ -256,8 +254,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100, 255));
-	cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 255));
+	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100, 1));
+	cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 1));
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -303,12 +301,16 @@ void CGameStateRun::OnShow()
 	upgrade_black.ShowBitmap();
 	slash.ShowBitmap(1.2);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		//cat_enemy[i]->OnMove();
-		cat_enemy[i]->OnShow();
+		if (!cat_enemy[i]->GetIsAttack())
+			cat_enemy[i]->OnShow_Walk();
+		else
+			cat_enemy[i]->OnShow_Attack();
 	}
 	for (int i = 0; i < (int)cat_friend.size(); i++) {
-		//cat_enemy[i]->OnMove();
-		cat_friend[i]->OnShow();
+		if (!cat_friend[i]->GetIsAttack())
+			cat_friend[i]->OnShow_Walk();
+		else
+			cat_friend[i]->OnShow_Attack();
 	}
 }
 }
