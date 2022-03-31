@@ -104,6 +104,7 @@ namespace game_framework {
 	void Cat_enemy::OnMove() {
 		if (!is_attack) {
 			animation_walk.OnMove();
+			AnimationReset();
 			this->center.x = this->center.x + this->speedPoint;
 		}
 		else {
