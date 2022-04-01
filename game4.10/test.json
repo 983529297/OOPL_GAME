@@ -1,0 +1,24 @@
+[
+          {
+                    "ap": 100,
+                    "as": 5,
+                    "at": "single",
+                    "dp": 50,
+                    "hp": 200,
+                    "knockback": 3,
+                    "ms": 3,
+                    "name": "dog",
+                    "range": 5
+          },
+          {
+                    "ap": 100,
+                    "as": 5,
+                    "at": "single",
+                    "dp": 30,
+                    "hp": 500,
+                    "knockback": 3,
+                    "ms": 2,
+                    "name": "marshmellow",
+                    "range": 5
+          }
+]
