@@ -25,5 +25,6 @@ namespace game_framework {
 		bool is_alive;				// ¬O§_¬¡µÛ
 		int defencePoint;
 		int x, y;
+		int centerX;
 	};
 }

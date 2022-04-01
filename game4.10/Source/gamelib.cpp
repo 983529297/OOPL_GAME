@@ -307,6 +307,79 @@ void CInteger::ShowBitmap()
 }
 
 /////////////////////////////////////////////////////////////////////////////
+// CIntegerTower: 這個class提供顯示整數圖形的能力
+// 1. 要懂得怎麼呼叫(運用)其各種能力，但是可以不懂下列的程式是什麼意思
+// 2. 自己寫到運用CMovingBitmap的程式時，可以參考下列程式的寫法
+/////////////////////////////////////////////////////////////////////////////
+
+//CMovingBitmap CInteger::digit[11];
+
+CIntegerTower::CIntegerTower(int digits)
+	: NUMDIGITS(digits)
+{
+	isBmpLoaded = false;
+}
+
+void CIntegerTower::Add(int x)
+{
+	n += x;
+}
+
+int CIntegerTower::GetInteger()
+{
+	return n;
+}
+
+void CIntegerTower::LoadBitmap()
+{
+	//
+	// digit[i]為class varibale，所以必須避免重複LoadBitmap
+	//
+	if (!isBmpLoaded) {
+		int d[11] = { IDB_0_T,IDB_1_T,IDB_2_T,IDB_3_T,IDB_4_T,IDB_5_T,IDB_6_T,IDB_7_T,IDB_8_T,IDB_9_T,IDB_MINUS };
+		for (int i = 0; i < 11; i++)
+			digit[i].LoadBitmap(d[i], RGB(255, 0, 0));
+		isBmpLoaded = true;
+	}
+}
+
+void CIntegerTower::SetInteger(int i)
+{
+	n = i;
+}
+
+void CIntegerTower::SetTopLeft(int nx, int ny)		// 將動畫的左上角座標移至 (x,y)
+{
+	x = nx; y = ny;
+}
+
+void CIntegerTower::ShowBitmap()
+{
+	GAME_ASSERT(isBmpLoaded, "CInteger: 請先執行LoadBitmap，然後才能ShowBitmap");
+	int nx;		// 待顯示位數的 x 座標
+	int MSB;	// 最左邊(含符號)的位數的數值
+	if (n >= 0) {
+		MSB = n;
+		nx = x + digit[0].Width() * (NUMDIGITS - 1);
+	}
+	else {
+		MSB = -n;
+		nx = x + digit[0].Width() * NUMDIGITS;
+	}
+	for (int i = 0; i < NUMDIGITS; i++) {
+		int d = MSB % 10;
+		MSB /= 10;
+		digit[d].SetTopLeft(nx, y);
+		digit[d].ShowBitmap(0.4);
+		nx -= digit[d].Width() / 4;
+	}
+	if (n < 0) { // 如果小於0，則顯示負號
+		digit[10].SetTopLeft(nx, y);
+		digit[10].ShowBitmap();
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
 // CMovingBitmap: Moving Bitmap class
 // 這個class提供可以移動的圖形
 // 要懂得怎麼呼叫(運用)其各種能力，但是可以不懂下列的程式是什麼意思

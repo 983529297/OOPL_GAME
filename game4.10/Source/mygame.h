@@ -109,8 +109,14 @@ namespace game_framework {
 		CMovingBitmap	upgrade_black;
 		CMovingBitmap	empty_block[5];
 		CMovingBitmap	slash;
+		CMovingBitmap	slash_T;
+		CMovingBitmap	slash_T_1;
 		CInteger callPoint;
 		CInteger callPointTotal;
+		CIntegerTower friendTowerBlood;
+		CIntegerTower friendTowerBloodTotal;
+		CIntegerTower enemyTowerBlood;
+		CIntegerTower enemyTowerBloodTotal;
 		Tower_enemy tower_enemy;
 		Tower_friend tower_friend;
 		vector<Cat*> cat_enemy;

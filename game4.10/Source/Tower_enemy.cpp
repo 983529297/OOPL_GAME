@@ -48,11 +48,12 @@ namespace game_framework {
 	void Tower_enemy::SetXY(int x, int y) {
 		this->x = x;
 		this->y = y;
+		this->centerX = x + bmp.Width() / 2;
 	}
 
 	void Tower_enemy::LoadBitmap()
 	{
-		bmp.LoadBitmap(IDB_TOWER2, RGB(255, 0, 0));
+		bmp.LoadBitmap(IDB_TOWER2);// , RGB(255, 0, 0));
 	}
 
 	void Tower_enemy::OnShow()

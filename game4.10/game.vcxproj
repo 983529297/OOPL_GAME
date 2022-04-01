@@ -358,6 +358,7 @@
     <Image Include="RES\f_marshmellow_walk_2.bmp" />
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\slash.bmp" />
+    <Image Include="RES\slash_T.bmp" />
     <Image Include="RES\start.bmp" />
     <Image Include="RES\t0.bmp" />
     <Image Include="RES\t1.bmp" />

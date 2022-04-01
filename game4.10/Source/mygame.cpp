@@ -216,7 +216,8 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	VectorSort();
-	callPoint.Add(1);
+	if (callPoint.GetInteger() < callPointTotal.GetInteger())
+		callPoint.Add(1);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
 		if (!cat_friend.empty()) {
 			cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange());
@@ -268,6 +269,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
 	slash.LoadBitmap(IDB_SLASH, (0, 0, 255));
+	slash_T.LoadBitmap(IDB_SLASH_T, (0, 0, 255));
+	slash_T_1.LoadBitmap(IDB_SLASH_T, (0, 0, 255));
 	upgrade.LoadBitmap(IDB_UPGRADE, (0, 0, 255));
 	upgrade_black.LoadBitmap(IDB_UPGRADE_BLACK, (0, 0, 255));
 	for (int i = 0; i < 5; i++)
@@ -279,6 +282,20 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	callPointTotal.SetInteger(500);
 	callPointTotal.SetTopLeft(1000, 0);
 	slash.SetTopLeft(970, 5);
+	friendTowerBlood.LoadBitmap();
+	friendTowerBloodTotal.LoadBitmap();
+	friendTowerBlood.SetInteger(500);
+	friendTowerBloodTotal.SetInteger(500);
+	enemyTowerBlood.LoadBitmap();
+	enemyTowerBloodTotal.LoadBitmap();
+	enemyTowerBlood.SetInteger(500);
+	enemyTowerBloodTotal.SetInteger(500);
+	friendTowerBlood.SetTopLeft(900, 220);
+	friendTowerBloodTotal.SetTopLeft(980, 220);
+	enemyTowerBlood.SetTopLeft(-30, 220);
+	enemyTowerBloodTotal.SetTopLeft(50, 220);
+	slash_T.SetTopLeft(1100, 225);
+	slash_T_1.SetTopLeft(170, 225);
 	ShowInitProgress(50);
 }
 
@@ -335,8 +352,14 @@ void CGameStateRun::OnShow()
 	upgrade.ShowBitmap();
 	callPoint.ShowBitmap();
 	callPointTotal.ShowBitmap();
+	friendTowerBlood.ShowBitmap();
+	friendTowerBloodTotal.ShowBitmap();
+	enemyTowerBlood.ShowBitmap();
+	enemyTowerBloodTotal.ShowBitmap();
 	upgrade_black.ShowBitmap();
 	slash.ShowBitmap(1.2);
+	slash_T.ShowBitmap(0.4);
+	slash_T_1.ShowBitmap(0.4);
 	for (unsigned i = 0; i < cat_enemy.size(); i++) {
 		if (!cat_enemy[i]->GetIsAttack())
 			cat_enemy[i]->OnShow_Walk();
