@@ -61,6 +61,7 @@ namespace game_framework {
 		}
 		else {
 			this->is_attack = false;
+			this->is_final_attack = false;
 			return false;
 		}
 	}
@@ -69,12 +70,31 @@ namespace game_framework {
 		return this->hit_box;
 	}
 
+	int Cat_enemy::GetAttackPoint() {
+		return this->attackPoint;
+	}
+
+	int Cat_enemy::GetBloodPoint() {
+		return this->blood;
+	}
+
 	bool Cat_enemy::GetIsAttack() {
 		return this->is_attack;
 	}
 
+	bool Cat_enemy::GetIsFinalAttack() {
+		return this->is_final_attack;
+	}
+
 	void Cat_enemy::BeAttack(int attack) {
 		this->blood = this->blood - attack;
+	}
+
+	void Cat_enemy::AnimationReset() {
+		animation_attack.Reset();
+		animation_walk.Reset();
+		is_final_attack = false;
+		is_attack = false;
 	}
 
 	int Cat_enemy::Attack() {
@@ -84,10 +104,21 @@ namespace game_framework {
 	void Cat_enemy::OnMove() {
 		if (!is_attack) {
 			animation_walk.OnMove();
+			AnimationReset();
 			this->center.x = this->center.x + this->speedPoint;
 		}
-		else
+		else {
 			animation_attack.OnMove();
+			this->is_final_attack = animation_attack.IsFinalBitmap();
+		}
+		this->hit_box = this->center.x + animation_walk.Width() / 2;
+	}
+
+	void Cat_enemy::ReOnMove() {
+		this->is_attack = false;
+		this->is_final_attack = false;
+		animation_walk.OnMove();
+		this->center.x = this->center.x + this->speedPoint;
 		this->hit_box = this->center.x + animation_walk.Width() / 2;
 	}
 

@@ -215,14 +215,49 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
+	VectorSort();
 	callPoint.Add(1);
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
-		cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange());
-		cat_enemy[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
+		if (!cat_friend.empty()) {
+			cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange());
+			cat_enemy[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
+			if (cat_enemy[i]->GetIsFinalAttack() && cat_enemy[i]->GetIsAttack()) {
+				cat_friend[0]->BeAttack(cat_enemy[i]->GetAttackPoint());
+				cat_enemy[i]->AnimationReset();
+			}
+		}
+		else {
+			cat_enemy[i]->ReOnMove();
+		}
 	}
 	for (int i = 0; i < (int)cat_friend.size(); i++) {
-		cat_friend[i]->isThere(cat_enemy[0]->GetAttackRange());
-		cat_friend[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
+		if (!cat_enemy.empty()) {
+			cat_friend[i]->isThere(cat_enemy[0]->GetAttackRange());
+			cat_friend[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
+			if (cat_friend[i]->GetIsFinalAttack() && cat_friend[i]->GetIsAttack()) {
+				cat_enemy[0]->BeAttack(cat_friend[i]->GetAttackPoint());
+				cat_friend[i]->AnimationReset();
+			}
+		}
+		else {
+			cat_friend[i]->ReOnMove();
+		}
+	}
+}
+
+void CGameStateRun::DeleteDeadCat(int position, bool side) {
+	if (side) {
+		//delete[] cat_enemy[position];
+		swap(cat_enemy[0], cat_enemy[cat_enemy.size() - 1]);
+		delete cat_enemy[cat_enemy.size() - 1];
+		cat_enemy.pop_back();
+		//cat_enemy.shrink_to_fit();
+	}
+	else {
+		swap(cat_friend[0], cat_friend[cat_friend.size() - 1]);
+		delete cat_friend[cat_friend.size() - 1];
+		cat_friend.pop_back();
+		//cat_friend.shrink_to_fit();
 	}
 }
 
@@ -254,8 +289,10 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	cat_enemy.push_back(new Cat_enemy("dog", 100, 100, 100, 1));
-	cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 1));
+	if (nChar == 0x25)
+		cat_enemy.push_back(new Cat_enemy("dog", 100, 50, 100, 10));
+	else if (nChar == 0x26)
+		cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 5));
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -300,17 +337,35 @@ void CGameStateRun::OnShow()
 	callPointTotal.ShowBitmap();
 	upgrade_black.ShowBitmap();
 	slash.ShowBitmap(1.2);
-	for (int i = 0; i < (int)cat_enemy.size(); i++) {
+	for (unsigned i = 0; i < cat_enemy.size(); i++) {
 		if (!cat_enemy[i]->GetIsAttack())
 			cat_enemy[i]->OnShow_Walk();
-		else
+		else {
 			cat_enemy[i]->OnShow_Attack();
+			if (cat_enemy[0]->GetBloodPoint() <= 0) {
+				DeleteDeadCat(0, true);
+			}
+		}
 	}
-	for (int i = 0; i < (int)cat_friend.size(); i++) {
+	for (unsigned i = 0; i < cat_friend.size(); i++) {
 		if (!cat_friend[i]->GetIsAttack())
 			cat_friend[i]->OnShow_Walk();
-		else
+		else {
 			cat_friend[i]->OnShow_Attack();
+			if (cat_friend[0]->GetBloodPoint() <= 0) {
+				DeleteDeadCat(0, false);
+			}
+		}
+	}
+}
+void CGameStateRun::VectorSort() {
+	for (unsigned i = 1; i < cat_enemy.size(); i++) {
+		if (cat_enemy[0]->GetAttackRange() < cat_enemy[i]->GetAttackRange())
+			swap(cat_enemy[0], cat_enemy[i]);
+	}
+	for (unsigned i = 1; i < cat_friend.size(); i++) {
+		if (cat_friend[0]->GetAttackRange() > cat_friend[i]->GetAttackRange())
+			swap(cat_friend[0], cat_friend[i]);
 	}
 }
 }
