@@ -162,25 +162,27 @@ IDB_F_MARSHMELLOW_WALK_1 BITMAP                  "..\\RES\\f_marshmellow_walk_1.
 
 IDB_F_MARSHMELLOW_WALK_2 BITMAP                  "..\\RES\\f_marshmellow_walk_2.bmp"
 
-IDB_0_T                 BITMAP                  ".\\RES\\t0.bmp"
+IDB_0_T                 BITMAP                  "..\\RES\\t0.bmp"
 
-IDB_1_T                 BITMAP                  ".\\RES\\t1.bmp"
+IDB_1_T                 BITMAP                  "..\\RES\\t1.bmp"
 
-IDB_2_T                 BITMAP                  ".\\RES\\t2.bmp"
+IDB_2_T                 BITMAP                  "..\\RES\\t2.bmp"
 
-IDB_3_T                 BITMAP                  ".\\RES\\t3.bmp"
+IDB_3_T                 BITMAP                  "..\\RES\\t3.bmp"
 
-IDB_4_T                 BITMAP                  ".\\RES\\t4.bmp"
+IDB_4_T                 BITMAP                  "..\\RES\\t4.bmp"
 
-IDB_5_T                 BITMAP                  ".\\RES\\t5.bmp"
+IDB_5_T                 BITMAP                  "..\\RES\\t5.bmp"
 
-IDB_6_T                 BITMAP                  ".\\RES\\t6.bmp"
+IDB_6_T                 BITMAP                  "..\\RES\\t6.bmp"
 
-IDB_7_T                 BITMAP                  ".\\RES\\t7.bmp"
+IDB_7_T                 BITMAP                  "..\\RES\\t7.bmp"
 
-IDB_8_T                 BITMAP                  ".\\RES\\t8.bmp"
+IDB_8_T                 BITMAP                  "..\\RES\\t8.bmp"
 
-IDB_9_T                 BITMAP                  ".\\RES\\t9.bmp"
+IDB_9_T                 BITMAP                  "..\\RES\\t9.bmp"
+
+IDB_SLASH_T             BITMAP                  "..\\RES\\slash_T.bmp"
 
 //F_000
 IDB_F_000_F_WALK_0    BITMAP                  "..\\RES\\cat\\000\\000_f_walk_0.bmp"
