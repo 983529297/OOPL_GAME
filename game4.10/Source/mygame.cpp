@@ -211,6 +211,28 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
+	cat_enemy.clear();
+	cat_friend.clear();
+	callPoint.SetInteger(0);
+	callPoint.SetTopLeft(820, 0);
+	callPointTotal.SetInteger(50);
+	callPointTotal.SetTopLeft(1000, 0);
+	friendTowerBlood.SetInteger(500);
+	friendTowerBlood.SetTopLeft(900, 220);
+	friendTowerBloodTotal.SetInteger(500);
+	friendTowerBloodTotal.SetTopLeft(980, 220);
+	enemyTowerBlood.SetInteger(500);
+	enemyTowerBlood.SetTopLeft(-30, 220);
+	enemyTowerBloodTotal.SetInteger(500);
+	enemyTowerBloodTotal.SetTopLeft(50, 220);
+	slash.SetTopLeft(970, 5);
+	slash_T.SetTopLeft(1100, 225);
+	slash_T_1.SetTopLeft(170, 225);
+	upgradePoint.SetInteger(40);
+	upgradePoint.SetTopLeft(50, 50);
+	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
+	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
+	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -225,6 +247,16 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			if (cat_enemy[i]->GetIsFinalAttack() && cat_enemy[i]->GetIsAttack()) {
 				cat_friend[0]->BeAttack(cat_enemy[i]->GetAttackPoint());
 				cat_enemy[i]->AnimationReset();
+				continue;
+			}
+		}
+		else if(cat_enemy[i]->isThere(friendTowerHitRange)){
+			cat_enemy[i]->OnMove();
+			if (cat_enemy[i]->GetIsFinalAttack() && cat_enemy[i]->GetIsAttack()) {
+				tower_friend.BeAttack(cat_enemy[i]->GetAttackPoint());
+				friendTowerBlood.Add(-(cat_enemy[i]->GetAttackPoint()));
+				cat_enemy[i]->AnimationReset();
+				continue;
 			}
 		}
 		else {
@@ -238,6 +270,16 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			if (cat_friend[i]->GetIsFinalAttack() && cat_friend[i]->GetIsAttack()) {
 				cat_enemy[0]->BeAttack(cat_friend[i]->GetAttackPoint());
 				cat_friend[i]->AnimationReset();
+				continue;
+			}
+		}
+		else if(cat_friend[i]->isThere(enemyTowerHitRange)){
+			cat_friend[i]->OnMove();
+			if (cat_friend[i]->GetIsFinalAttack() && cat_friend[i]->GetIsAttack()) {
+				tower_enemy.BeAttack(cat_friend[i]->GetAttackPoint());
+				enemyTowerBlood.Add(-(cat_friend[i]->GetAttackPoint()));
+				cat_friend[i]->AnimationReset();
+				continue;
 			}
 		}
 		else {
@@ -277,26 +319,14 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 		empty_block[i].LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
 	callPoint.LoadBitmap();
 	callPointTotal.LoadBitmap();
-	callPoint.SetInteger(0);
-	callPoint.SetTopLeft(820, 0);
-	callPointTotal.SetInteger(500);
-	callPointTotal.SetTopLeft(1000, 0);
-	slash.SetTopLeft(970, 5);
 	friendTowerBlood.LoadBitmap();
 	friendTowerBloodTotal.LoadBitmap();
-	friendTowerBlood.SetInteger(500);
-	friendTowerBloodTotal.SetInteger(500);
 	enemyTowerBlood.LoadBitmap();
 	enemyTowerBloodTotal.LoadBitmap();
-	enemyTowerBlood.SetInteger(500);
-	enemyTowerBloodTotal.SetInteger(500);
-	friendTowerBlood.SetTopLeft(900, 220);
-	friendTowerBloodTotal.SetTopLeft(980, 220);
-	enemyTowerBlood.SetTopLeft(-30, 220);
-	enemyTowerBloodTotal.SetTopLeft(50, 220);
-	slash_T.SetTopLeft(1100, 225);
-	slash_T_1.SetTopLeft(170, 225);
+	upgradePoint.LoadBitmap();
 	ShowInitProgress(50);
+	this->enemyTowerHitRange = tower_enemy.GetHitBox();
+	this->friendTowerHitRange = tower_friend.GetHitBox();
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -336,12 +366,10 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
 	
 }
-
+//塔升級 每次40加50 最高8等
 void CGameStateRun::OnShow()
 {
-	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
-	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
-	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
+	
 	background.ShowBitmap();
 	for (int i = 0; i < 5; i++) {
 		empty_block[i].SetTopLeft(330 + 160 * i, 600);
@@ -349,17 +377,21 @@ void CGameStateRun::OnShow()
 	}
 	tower_friend.OnShow();
 	tower_enemy.OnShow();
-	upgrade.ShowBitmap();
 	callPoint.ShowBitmap();
 	callPointTotal.ShowBitmap();
 	friendTowerBlood.ShowBitmap();
 	friendTowerBloodTotal.ShowBitmap();
 	enemyTowerBlood.ShowBitmap();
 	enemyTowerBloodTotal.ShowBitmap();
-	upgrade_black.ShowBitmap();
 	slash.ShowBitmap(1.2);
 	slash_T.ShowBitmap(0.4);
 	slash_T_1.ShowBitmap(0.4);
+	if (upgradePoint.GetInteger() > callPoint.GetInteger()) {
+		upgrade_black.ShowBitmap();
+	}
+	else {
+		upgrade.ShowBitmap();
+	}
 	for (unsigned i = 0; i < cat_enemy.size(); i++) {
 		if (!cat_enemy[i]->GetIsAttack())
 			cat_enemy[i]->OnShow_Walk();

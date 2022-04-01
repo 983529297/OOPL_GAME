@@ -11,6 +11,7 @@ namespace game_framework {
 
 	Tower_friend::Tower_friend() {
 		this->is_alive = 1;
+		SetXY(1000, 250);
 	}
 
 	Tower_friend::~Tower_friend() {
@@ -48,17 +49,21 @@ namespace game_framework {
 	void Tower_friend::SetXY(int x, int y) {
 		this->x = x;
 		this->y = y;
-		this->centerX = x + bmp.Width() / 2;
 	}
 
 	void Tower_friend::LoadBitmap()
 	{
-		bmp.LoadBitmap(IDB_TOWER1);// , RGB(255, 0, 0));
+		bmp.LoadBitmap(IDB_TOWER1, RGB(255, 0, 0));
+		this->centerX = x + bmp.Width() / 4;
 	}
 
 	void Tower_friend::OnShow()
 	{
-		bmp.SetTopLeft(1000, 250);
+		bmp.SetTopLeft(x, y);
 		bmp.ShowBitmap(0.7);
+	}
+
+	int Tower_friend::GetHitBox() {
+		return this->centerX;
 	}
 }

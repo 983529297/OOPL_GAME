@@ -11,6 +11,7 @@ namespace game_framework {
 
 	Tower_enemy::Tower_enemy() {
 		this->is_alive = 1;
+		SetXY(70, 220);
 	}
 
 	Tower_enemy::~Tower_enemy() {
@@ -20,7 +21,7 @@ namespace game_framework {
 	void Tower_enemy::SetBlood(int bloodPoint) {
 		blood = bloodPoint;
 	}
-	
+
 	void Tower_enemy::SetAttack(int attackPoint) {
 		this->attackPoint = attackPoint;
 	}
@@ -48,17 +49,21 @@ namespace game_framework {
 	void Tower_enemy::SetXY(int x, int y) {
 		this->x = x;
 		this->y = y;
-		this->centerX = x + bmp.Width() / 2;
 	}
 
 	void Tower_enemy::LoadBitmap()
 	{
-		bmp.LoadBitmap(IDB_TOWER2);// , RGB(255, 0, 0));
+		bmp.LoadBitmap(IDB_TOWER2, RGB(255, 0, 0));
+		this->centerX = x + bmp.Width() / 2;
 	}
 
 	void Tower_enemy::OnShow()
 	{
-		bmp.SetTopLeft(70, 220);
+		bmp.SetTopLeft(x, y);
 		bmp.ShowBitmap(0.7);
+	}
+
+	int Tower_enemy::GetHitBox() {
+		return this->centerX;
 	}
 }

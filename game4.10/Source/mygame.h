@@ -117,10 +117,13 @@ namespace game_framework {
 		CIntegerTower friendTowerBloodTotal;
 		CIntegerTower enemyTowerBlood;
 		CIntegerTower enemyTowerBloodTotal;
+		CIntegerTower upgradePoint;
 		Tower_enemy tower_enemy;
 		Tower_friend tower_friend;
 		vector<Cat*> cat_enemy;
 		vector<Cat*> cat_friend;
+		int enemyTowerHitRange;
+		int friendTowerHitRange;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

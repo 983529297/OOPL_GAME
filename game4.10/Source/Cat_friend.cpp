@@ -21,7 +21,7 @@ namespace game_framework {
 		LoadBitmap_Attack();
 		center.x = this->x + animation_walk.Width() / 2;
 		center.y = this->y + animation_walk.Height() / 2;
-		this->hit_box = this->center.x + animation_walk.Width() / 2;
+		this->hit_box = this->center.x - animation_walk.Width() / 2;
 		this->attack_range = this->x - 50;
 	}
 
@@ -61,7 +61,7 @@ namespace game_framework {
 		}
 		else {
 			this->is_attack = false;
-			//this->is_final_attack = false;
+			this->is_final_attack = false;
 			return false;
 		}
 	}

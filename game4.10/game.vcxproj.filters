@@ -327,5 +327,8 @@
     <Image Include="RES\slash_T.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\f_000_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
