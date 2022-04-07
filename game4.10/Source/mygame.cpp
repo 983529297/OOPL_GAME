@@ -58,6 +58,9 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "mygame.h"
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
@@ -229,7 +232,7 @@ void CGameStateRun::OnBeginState()
 	slash_T.SetTopLeft(1100, 225);
 	slash_T_1.SetTopLeft(170, 225);
 	upgradePoint.SetInteger(40);
-	upgradePoint.SetTopLeft(50, 50);
+	upgradePoint.SetTopLeft(-15, 690);
 	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
 	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
 	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
@@ -237,6 +240,12 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
+	if (enemyTowerBlood.GetInteger() <= 0) {
+		enemyTowerBlood.SetInteger(500);
+	}
+	else if (friendTowerBlood.GetInteger() <= 0){
+		GotoGameState(GAME_STATE_OVER);
+	}
 	VectorSort();
 	if (callPoint.GetInteger() < callPointTotal.GetInteger())
 		callPoint.Add(1);
@@ -306,6 +315,7 @@ void CGameStateRun::DeleteDeadCat(int position, bool side) {
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
+	readCSV();
 	ShowInitProgress(33);
 	background.LoadBitmap(IDB_BACK1);
 	tower_friend.LoadBitmap();
@@ -340,6 +350,12 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		cat_enemy.push_back(new Cat_enemy("dog", 100, 50, 100, 10));
 	else if (nChar == 0x26)
 		cat_friend.push_back(new Cat_friend("marshmellow", 100, 100, 100, 5));
+	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())
+	{
+		callPoint.Add(-(upgradePoint.GetInteger()));
+		upgradePoint.Add(40);
+		callPointTotal.Add(50);
+	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -369,7 +385,6 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 //塔升級 每次40加50 最高8等
 void CGameStateRun::OnShow()
 {
-	
 	background.ShowBitmap();
 	for (int i = 0; i < 5; i++) {
 		empty_block[i].SetTopLeft(330 + 160 * i, 600);
@@ -392,6 +407,7 @@ void CGameStateRun::OnShow()
 	else {
 		upgrade.ShowBitmap();
 	}
+	upgradePoint.ShowBitmap();
 	for (unsigned i = 0; i < cat_enemy.size(); i++) {
 		if (!cat_enemy[i]->GetIsAttack())
 			cat_enemy[i]->OnShow_Walk();
@@ -421,6 +437,24 @@ void CGameStateRun::VectorSort() {
 	for (unsigned i = 1; i < cat_friend.size(); i++) {
 		if (cat_friend[0]->GetAttackRange() > cat_friend[i]->GetAttackRange())
 			swap(cat_friend[0], cat_friend[i]);
+	}
+}
+
+void CGameStateRun::readCSV() {
+	ifstream infile("data.csv", ios::in);
+	if (!infile) {
+		exit(1);
+	}
+	string line;
+	string str;
+	getline(infile, line);
+	while (getline(infile, line)) {
+		stringstream sstream(line);
+		vector<string> one_cat;
+		while (getline(sstream, str, ',')) {
+			one_cat.push_back(str);
+		}
+		data.push_back(one_cat);
 	}
 }
 }

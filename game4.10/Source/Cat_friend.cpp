@@ -6,17 +6,20 @@
 #include "gamelib.h"
 #include "Cat.h"
 #include "Cat_friend.h"
+#include <time.h>
 
 namespace game_framework {
 
 	Cat_friend::Cat_friend(string name, int blood, int attack, int defence, int speed) {
+		srand((unsigned)time(NULL));
+		int random = rand() % 20;
 		this->name = name;
 		this->blood = blood;
 		this->defancePoint = defence;
 		this->attackPoint = attack;
 		this->is_enemy = 1;
 		this->speedPoint = speed;
-		SetXY(950, 430);
+		SetXY(950, 430 + random);
 		LoadBitmap_Walk();
 		LoadBitmap_Attack();
 		center.x = this->x + animation_walk.Width() / 2;
@@ -57,11 +60,13 @@ namespace game_framework {
 	bool Cat_friend::isThere(int x) {
 		if (x > this->hit_box) {
 			this->is_attack = true;
+			animation_walk.Reset();
 			return true;
 		}
 		else {
 			this->is_attack = false;
 			this->is_final_attack = false;
+			animation_attack.Reset();
 			return false;
 		}
 	}
@@ -104,7 +109,7 @@ namespace game_framework {
 	void Cat_friend::OnMove() {
 		if (!is_attack) {
 			animation_walk.OnMove();
-			AnimationReset();
+			//AnimationReset();
 			this->center.x = this->center.x - this->speedPoint;
 		}
 		else {
