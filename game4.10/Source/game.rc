@@ -184,8 +184,17 @@ IDB_9_T                 BITMAP                  "..\\RES\\t9.bmp"
 
 IDB_SLASH_T             BITMAP                  "..\\RES\\slash_T.bmp"
 
-IDB_BITMAP10            BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\game4.10\\RES\\f_000_f_walk_0.bmp"
+IDB_BITMAP10            BITMAP                  "..\\RES\\cat\\000\\000_f_walk_0.bmp"
 //F_001
+IDB_F_000_F_WALK_0    BITMAP                  "..\\RES\\cat\\000\\000_f_walk_0.bmp"
+IDB_F_000_F_WALK_1    BITMAP                  "..\\RES\\cat\\000\\000_f_walk_1.bmp"
+IDB_F_000_F_WALK_2    BITMAP                  "..\\RES\\cat\\000\\000_f_walk_2.bmp"
+IDB_F_000_F_ATTACK_0    BITMAP                  "..\\RES\\cat\\000\\000_f_attack_0.bmp"
+IDB_F_000_F_ATTACK_1    BITMAP                  "..\\RES\\cat\\000\\000_f_attack_1.bmp"
+//IDB_F_000_F_ATTACK_2    BITMAP                  "..\\RES\\cat\\000\\000_f_attack_2.bmp"
+IDB_F_000_F_ATTACK_3    BITMAP                  "..\\RES\\cat\\000\\000_f_attack_3.bmp"
+IDB_F_000_F_KNOCKBACK_0    BITMAP                  "..\\RES\\cat\\000\\000_f_knockback_0.bmp"
+
 IDB_F_001_F_WALK_0    BITMAP                  "..\\RES\\cat\\001\\001_f_walk_0.bmp"
 IDB_F_001_F_WALK_1    BITMAP                  "..\\RES\\cat\\001\\001_f_walk_1.bmp"
 IDB_F_001_F_WALK_2    BITMAP                  "..\\RES\\cat\\001\\001_f_walk_2.bmp"
@@ -194,6 +203,14 @@ IDB_F_001_F_ATTACK_1    BITMAP                  "..\\RES\\cat\\001\\001_f_attack
 IDB_F_001_F_ATTACK_2    BITMAP                  "..\\RES\\cat\\001\\001_f_attack_2.bmp"
 IDB_F_001_F_ATTACK_3    BITMAP                  "..\\RES\\cat\\001\\001_f_attack_3.bmp"
 IDB_F_001_F_KNOCKBACK_0    BITMAP                  "..\\RES\\cat\\001\\001_f_knockback_0.bmp"
+
+IDB_E_018_WALK_0    BITMAP                  "..\\RES\\enemy\\018\\018_walk_0.bmp"
+IDB_E_018_WALK_1    BITMAP                  "..\\RES\\enemy\\018\\018_walk_1.bmp"
+IDB_E_018_WALK_2    BITMAP                  "..\\RES\\enemy\\018\\018_walk_2.bmp"
+IDB_E_018_ATTACK_0    BITMAP                  "..\\RES\\enemy\\018\\018_attack_0.bmp"
+IDB_E_018_ATTACK_1    BITMAP                  "..\\RES\\enemy\\018\\018_attack_1.bmp"
+IDB_E_018_ATTACK_2    BITMAP                  "..\\RES\\enemy\\018\\018_attack_2.bmp"
+IDB_E_018_KNOCKBACK_0    BITMAP                  "..\\RES\\enemy\\018\\018_knockback_0.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
