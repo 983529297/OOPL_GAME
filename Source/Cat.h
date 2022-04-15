@@ -16,7 +16,9 @@ namespace game_framework {
 		virtual void OnShow_Attack() {};											// 將圖形貼到畫面
 		virtual void SetXY(int nx, int ny) {};								// 設定圓心的座標
 		virtual void SetIsAlive(bool alive) {};							// 設定是否活著
+		virtual bool GetReset() { return false; };							// 設定是否活著
 		virtual void AnimationReset() {};							// 設定是否活著
+		virtual void SetAnimationReset() {};							// 設定是否活著
 		virtual void SetBlood(int attackCount) {};							// 扣血
 		virtual void BeAttack(int attack) {};
 		virtual bool isThere(int x) { return false; };

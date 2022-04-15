@@ -97,11 +97,20 @@ namespace game_framework {
 		this->blood = this->blood - attack;
 	}
 
+	void Cat_friend::SetAnimationReset() {
+		this->reset = true;
+	}
+
+	bool Cat_friend::GetReset() {
+		return this->reset;
+	}
+
 	void Cat_friend::AnimationReset() {
 		animation_attack.Reset();
 		animation_walk.Reset();
-		is_final_attack = false;
-		is_attack = false;
+		this->reset = false;
+		//is_final_attack = false;
+		//is_attack = false;
 	}
 
 	int Cat_friend::Attack() {
