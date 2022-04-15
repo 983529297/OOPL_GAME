@@ -1,3 +1,4 @@
-name,ap,hp,dp,ms,as,at,range,attack_pic,walk_pic
-f000,100,200,50,3,5,single,5,4,3
-f001,100,500,30,2,5,single,5,4,3
+name,ap,hp,dp,ms,as,at,range,attack_pic,walk_pic,cost
+f000,100,200,50,3,5,single,5,4,3,50
+f001,100,500,30,2,5,single,5,4,3,50
+f004,100,500,30,2,5,single,5,4,4,50

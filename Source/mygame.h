@@ -109,6 +109,7 @@ namespace game_framework {
 		CMovingBitmap	upgrade;
 		CMovingBitmap	upgrade_black;
 		CMovingBitmap	empty_block[5];
+		CMovingBitmap	block[5];
 		CMovingBitmap	slash;
 		CMovingBitmap	slash_T;
 		CMovingBitmap	slash_T_1;

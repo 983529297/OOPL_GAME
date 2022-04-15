@@ -325,8 +325,14 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	slash_T_1.LoadBitmap(IDB_SLASH_T, (0, 0, 255));
 	upgrade.LoadBitmap(IDB_UPGRADE, (0, 0, 255));
 	upgrade_black.LoadBitmap(IDB_UPGRADE_BLACK, (0, 0, 255));
-	for (int i = 0; i < 5; i++)
-		empty_block[i].LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
+	unsigned i = 0;
+	for (i = 0; i < data_friend.size(); i++) {
+		string path = ".\\res\\cat\\" + data_friend[i][0] + "\\" + data_friend[i][0] + "_f_uni" + ".bmp";
+		char* cpath = (char*)path.c_str();
+		block[i].LoadBitmap(cpath, RGB(1, 1, 1));
+	}
+	for (int j = i; j < 5; j++)
+		block[j].LoadBitmap(IDB_EMPTY_BLOCK, (0, 0, 255));
 	callPoint.LoadBitmap();
 	callPointTotal.LoadBitmap();
 	friendTowerBlood.LoadBitmap();
@@ -346,10 +352,22 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	if (nChar == 0x25)
+	if (nChar == 0x25) {
 		cat_enemy.push_back(new Cat_enemy(data_enemy[0][0], stoi(data_enemy[0][2]), stoi(data_enemy[0][1]), stoi(data_enemy[0][3]), stoi(data_enemy[0][4]), stoi(data_enemy[0][8]), stoi(data_enemy[0][9])));
-	else if (nChar == 0x26)
+
+	}
+	else if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9])));
+		callPoint.Add(-stoi(data_friend[0][10]));
+	}
+	else if (nChar == 0x32 && callPoint.GetInteger() >= stoi(data_friend[1][10])) {
+		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9])));
+		callPoint.Add(-stoi(data_friend[1][10]));
+	}
+	else if (nChar == 0x33 && callPoint.GetInteger() >= stoi(data_friend[2][10])) {
+		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9])));
+		callPoint.Add(-stoi(data_friend[2][10]));
+	}
 	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())
 	{
 		callPoint.Add(-(upgradePoint.GetInteger()));
@@ -387,8 +405,8 @@ void CGameStateRun::OnShow()
 {
 	background.ShowBitmap();
 	for (int i = 0; i < 5; i++) {
-		empty_block[i].SetTopLeft(330 + 160 * i, 600);
-		empty_block[i].ShowBitmap();
+		block[i].SetTopLeft(330 + 160 * i, 600);
+		block[i].ShowBitmap();
 	}
 	tower_friend.OnShow();
 	tower_enemy.OnShow();

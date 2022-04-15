@@ -21,9 +21,9 @@ namespace game_framework {
 		this->speedPoint = speed;
 		this->attack_pic = attack_pic;
 		this->walk_pic = walk_pic;
-		SetXY(130, 430 + random);
 		LoadBitmap_Walk();
 		LoadBitmap_Attack();
+		SetXY(130, 530 + random - animation_walk.Height());
 		center.x = this->x + animation_walk.Width() / 2;
 		center.y = this->y + animation_walk.Height() / 2;
 		this->hit_box = this->center.x + animation_walk.Width() / 2;
