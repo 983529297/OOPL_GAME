@@ -255,7 +255,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			cat_enemy[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
 			if (cat_enemy[i]->GetIsFinalAttack() && cat_enemy[i]->GetIsAttack()) {
 				cat_friend[0]->BeAttack(cat_enemy[i]->GetAttackPoint());
-				cat_enemy[i]->AnimationReset();
+				cat_enemy[i]->SetAnimationReset();
 				continue;
 			}
 		}
@@ -264,7 +264,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			if (cat_enemy[i]->GetIsFinalAttack() && cat_enemy[i]->GetIsAttack()) {
 				tower_friend.BeAttack(cat_enemy[i]->GetAttackPoint());
 				friendTowerBlood.Add(-(cat_enemy[i]->GetAttackPoint()));
-				cat_enemy[i]->AnimationReset();
+				cat_enemy[i]->SetAnimationReset();
 				continue;
 			}
 		}
@@ -278,7 +278,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			cat_friend[i]->OnMove();//cat_friend[0]->BeAttack(cat_enemy[i]->BeAttack());
 			if (cat_friend[i]->GetIsFinalAttack() && cat_friend[i]->GetIsAttack()) {
 				cat_enemy[0]->BeAttack(cat_friend[i]->GetAttackPoint());
-				cat_friend[i]->AnimationReset();
+				cat_friend[i]->SetAnimationReset();
 				continue;
 			}
 		}
@@ -287,7 +287,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			if (cat_friend[i]->GetIsFinalAttack() && cat_friend[i]->GetIsAttack()) {
 				tower_enemy.BeAttack(cat_friend[i]->GetAttackPoint());
 				enemyTowerBlood.Add(-(cat_friend[i]->GetAttackPoint()));
-				cat_friend[i]->AnimationReset();
+				cat_friend[i]->SetAnimationReset();
 				continue;
 			}
 		}
@@ -413,6 +413,8 @@ void CGameStateRun::OnShow()
 			cat_enemy[i]->OnShow_Walk();
 		else {
 			cat_enemy[i]->OnShow_Attack();
+			if (cat_enemy[i]->GetReset())
+				cat_enemy[i]->AnimationReset();
 			if (cat_enemy[0]->GetBloodPoint() <= 0) {
 				DeleteDeadCat(0, true);
 			}
@@ -423,6 +425,8 @@ void CGameStateRun::OnShow()
 			cat_friend[i]->OnShow_Walk();
 		else {
 			cat_friend[i]->OnShow_Attack();
+			if (cat_friend[i]->GetReset())
+				cat_friend[i]->SetAnimationReset();
 			if (cat_friend[0]->GetBloodPoint() <= 0) {
 				DeleteDeadCat(0, false);
 			}

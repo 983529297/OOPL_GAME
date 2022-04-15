@@ -16,7 +16,9 @@ namespace game_framework {
 		void OnShow_Attack() override;											// 將圖形貼到畫面
 		void SetXY(int nx, int ny) override;								// 設定圓心的座標
 		void SetIsAlive(bool alive) override;							// 設定是否活著
+		bool GetReset() override;							// 設定是否活著
 		void AnimationReset() override;							// 設定是否活著
+		void SetAnimationReset() override;							// 設定是否活著
 		void SetBlood(int attackCount) override;							// 扣血
 		void BeAttack(int attack) override;
 		int Attack() override;
@@ -41,6 +43,7 @@ namespace game_framework {
 		bool is_enemy;				// 是否敵人
 		bool is_attack;				// 是否敵人
 		bool is_final_attack = false;				// 是否敵人
+		bool reset = false;
 		int hit_box;
 		int attack_range;
 		vector<string> walkPath;
