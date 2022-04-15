@@ -368,6 +368,10 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9])));
 		callPoint.Add(-stoi(data_friend[2][10]));
 	}
+	else if (nChar == 0x34 && callPoint.GetInteger() >= stoi(data_friend[3][10])) {
+		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9])));
+		callPoint.Add(-stoi(data_friend[3][10]));
+	}
 	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())
 	{
 		callPoint.Add(-(upgradePoint.GetInteger()));
@@ -444,7 +448,7 @@ void CGameStateRun::OnShow()
 		else {
 			cat_friend[i]->OnShow_Attack();
 			if (cat_friend[i]->GetReset())
-				cat_friend[i]->SetAnimationReset();
+				cat_friend[i]->AnimationReset();
 			if (cat_friend[0]->GetBloodPoint() <= 0) {
 				DeleteDeadCat(0, false);
 			}
