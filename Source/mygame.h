@@ -38,19 +38,20 @@
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
 
-#include "CEraser.h"
-#include "CBall.h"
-#include "CBouncingBall.h"
 #include "Tower_enemy.h"
 #include "Tower_friend.h"
 #include "Cat.h"
 #include "Cat_enemy.h"
 #include "Cat_friend.h"
+#include "Stage.h"
+#include "SimpleFactory.h"
+
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
+	static int stagenum = 2;
 
 	enum AUDIO_ID {				// 定義各種音效的編號
 		AUDIO_DING,				// 0
@@ -62,7 +63,6 @@ namespace game_framework {
 	// 這個class為遊戲的遊戲開頭畫面物件
 	// 每個Member function的Implementation都要弄懂
 	/////////////////////////////////////////////////////////////////////////////
-
 	class CGameStateInit : public CGameState {
 	public:
 		CGameStateInit(CGame *g);
@@ -126,6 +126,8 @@ namespace game_framework {
 		vector<Cat*> cat_friend;
 		vector<vector<string>> data_enemy;
 		vector<vector<string>> data_friend;
+		Stage *stage;
+		SimpleFactory *sf;
 		int enemyTowerHitRange;
 		int friendTowerHitRange;
 	};

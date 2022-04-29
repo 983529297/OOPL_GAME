@@ -192,10 +192,14 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g)
 {
+	sf = new SimpleFactory();
 }
 
 CGameStateRun::~CGameStateRun()
 {
+	delete sf;
+	if (stage != nullptr)
+		delete stage;
 	if (!cat_enemy.empty())
 	{
 		for (int i = 0; i < (int)cat_enemy.size(); i++) {
@@ -233,13 +237,20 @@ void CGameStateRun::OnBeginState()
 	slash_T_1.SetTopLeft(170, 225);
 	upgradePoint.SetInteger(40);
 	upgradePoint.SetTopLeft(-15, 690);
-	background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
-	upgrade.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
-	upgrade_black.SetTopLeft((SIZE_X - background.Width()) / 2, 555);
+	//background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
+	stage = sf->GetStage(stagenum);
+	stage->LoadBack();
+	upgrade.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
+	upgrade_black.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
+	stage->countEnemyNum();
+	int num = stage->getEnemyNum();
+	int weight = 1;
+	if (num != -1)
+		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9])));
 	if (enemyTowerBlood.GetInteger() <= 0) {
 		enemyTowerBlood.SetInteger(500);
 	}
@@ -317,7 +328,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
 	readCSV();
 	ShowInitProgress(33);
-	background.LoadBitmap(IDB_BACK1);
+	//background.LoadBitmap(IDB_BACK1);
 	tower_friend.LoadBitmap();
 	tower_enemy.LoadBitmap();
 	slash.LoadBitmap(IDB_SLASH, (0, 0, 255));
@@ -352,11 +363,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	if (nChar == 0x25) {
-		cat_enemy.push_back(new Cat_enemy(data_enemy[0][0], stoi(data_enemy[0][2]), stoi(data_enemy[0][1]), stoi(data_enemy[0][3]), stoi(data_enemy[0][4]), stoi(data_enemy[0][8]), stoi(data_enemy[0][9])));
-
-	}
-	else if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {
+	if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9])));
 		callPoint.Add(-stoi(data_friend[0][10]));
 	}
@@ -407,7 +414,8 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 //塔升級 每次40加50 最高8等
 void CGameStateRun::OnShow()
 {
-	background.ShowBitmap();
+	//background.ShowBitmap();
+	stage->OnShowBack();
 	for (int i = 0; i < 5; i++) {
 		block[i].SetTopLeft(330 + 160 * i, 600);
 		block[i].ShowBitmap();

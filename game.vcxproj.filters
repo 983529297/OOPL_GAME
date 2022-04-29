@@ -120,18 +120,6 @@
     <ClCompile Include="Source\mygame.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CEraser.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\CBall.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\CBouncingBall.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Cempty.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Cat_friend.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
@@ -142,6 +130,39 @@
       <Filter>MyGame</Filter>
     </ClCompile>
     <ClCompile Include="Source\Cat_enemy.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage1.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage2.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage3.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage4.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage5.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage6.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage7.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage8.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage9.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stage10.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimpleFactory.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,18 +194,6 @@
     <ClInclude Include="Source\mygame.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CEraser.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\CBall.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\CBouncingBall.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Cempty.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Cat_friend.h">
       <Filter>MyGame</Filter>
     </ClInclude>
@@ -198,6 +207,42 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\Cat_enemy.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage1.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage2.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage3.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage4.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage5.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage6.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage7.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage8.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage9.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stage10.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimpleFactory.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -328,6 +373,228 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\f_000_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\back10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f000\f000_f_uni.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f001\f001_f_uni.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_walk_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f004\f004_f_uni.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_walk_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_attack_7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cat\f018\f018_f_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e000\e000_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_walk_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_attack_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e001\e001_knockback_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_walk_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_walk_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_walk_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_attack_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_attack_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_attack_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\enemy\e018\e018_knockback_0.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
