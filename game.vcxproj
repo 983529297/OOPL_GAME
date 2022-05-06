@@ -369,6 +369,7 @@
     <Image Include="RES\back7.bmp" />
     <Image Include="RES\back8.bmp" />
     <Image Include="RES\back9.bmp" />
+    <Image Include="res\bitmap11.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_0.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_1.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_2.bmp" />
@@ -446,7 +447,10 @@
     <Image Include="RES\f_marshmellow_walk_0.bmp" />
     <Image Include="RES\f_marshmellow_walk_1.bmp" />
     <Image Include="RES\f_marshmellow_walk_2.bmp" />
+    <Image Include="RES\lose.bmp" />
     <Image Include="RES\opend.bmp" />
+    <Image Include="RES\option.bmp" />
+    <Image Include="RES\over_back.bmp" />
     <Image Include="RES\slash.bmp" />
     <Image Include="RES\slash_T.bmp" />
     <Image Include="RES\start.bmp" />
@@ -464,6 +468,7 @@
     <Image Include="RES\tower2.bmp" />
     <Image Include="RES\upgrade.bmp" />
     <Image Include="RES\upgrade_black.bmp" />
+    <Image Include="RES\win.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

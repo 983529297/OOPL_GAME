@@ -84,8 +84,11 @@ void CGameStateInit::OnInit()
 	//
 	logo.LoadBitmap(IDB_OPEND);
 	start.LoadBitmap(IDB_START, (0, 0, 255));
+	option.LoadBitmap(IDB_OPTION, (0, 0, 255));
 	start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
+	option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
 	start_size = 0.81;
+	option_size = 0.81;
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
@@ -112,9 +115,19 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height()) {
 			start_size = 0.9;
 			start.SetTopLeft(SIZE_X / 2 - 205, 390);//SIZE_Y/8);
+			option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
+			option_size = 0.81;
+		}
+		else if (option.Left() < point.x && point.x < option.Left() + option.Width() && option.Top() < point.y && point.y < option.Top() + option.Height()){
+			option_size = 0.9;
+			option.SetTopLeft(SIZE_X / 2 - 205, 491);//SIZE_Y/8);
+			start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
+			start_size = 0.81;
 		}
 		else {
 			start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
+			option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
+			option_size = 0.81;
 			start_size = 0.81;
 		}
 	}
@@ -131,6 +144,7 @@ void CGameStateInit::OnShow()
 	logo.SetTopLeft((SIZE_X - logo.Width()) / 2, 0);//SIZE_Y/8);
 	logo.ShowBitmap();
 	start.ShowBitmap(start_size);
+	option.ShowBitmap(option_size);
 }								
 
 /////////////////////////////////////////////////////////////////////////////
@@ -151,15 +165,17 @@ void CGameStateOver::OnMove()
 
 void CGameStateOver::OnBeginState()
 {
+	win.SetTopLeft((SIZE_X - back.Width()) / 2, 170);
+	lose.SetTopLeft((SIZE_X - back.Width()) / 2, 170);
 	counter = 30 * 5; // 5 seconds
 }
 
 void CGameStateOver::OnInit()
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
+	win.LoadBitmap(IDB_WIN, (0, 0, 255));
+	lose.LoadBitmap(IDB_LOSE, (0, 0, 255));
+	back.LoadBitmap(IDB_OVERBACK);
+	back.SetTopLeft((SIZE_X - back.Width()) / 2, 0);
 	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
 	//
 	// 開始載入資料
@@ -172,7 +188,7 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+	/*CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
 	CFont f,*fp;
 	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
 	fp=pDC->SelectObject(&f);					// 選用 font f
@@ -182,7 +198,12 @@ void CGameStateOver::OnShow()
 	sprintf(str, "Game Over ! (%d)", counter / 30);
 	pDC->TextOut(240,210,str);
 	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC*/
+	back.ShowBitmap();
+	if (win_lose == 1)
+		win.ShowBitmap();
+	else
+		lose.ShowBitmap();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -193,13 +214,16 @@ CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g)
 {
 	sf = new SimpleFactory();
+	//stage = sf->GetStage(1);
 }
 
 CGameStateRun::~CGameStateRun()
 {
 	delete sf;
-	if (stage != nullptr)
+	if (stage != nullptr) {
+		TRACE("\n%d\n", 111111111);
 		delete stage;
+	}
 	if (!cat_enemy.empty())
 	{
 		for (int i = 0; i < (int)cat_enemy.size(); i++) {
@@ -224,9 +248,9 @@ void CGameStateRun::OnBeginState()
 	callPoint.SetTopLeft(820, 0);
 	callPointTotal.SetInteger(50);
 	callPointTotal.SetTopLeft(1000, 0);
-	friendTowerBlood.SetInteger(500);
+	friendTowerBlood.SetInteger(5000);
 	friendTowerBlood.SetTopLeft(900, 220);
-	friendTowerBloodTotal.SetInteger(500);
+	friendTowerBloodTotal.SetInteger(5000);
 	friendTowerBloodTotal.SetTopLeft(980, 220);
 	enemyTowerBlood.SetInteger(500);
 	enemyTowerBlood.SetTopLeft(-30, 220);
@@ -238,6 +262,8 @@ void CGameStateRun::OnBeginState()
 	upgradePoint.SetInteger(40);
 	upgradePoint.SetTopLeft(-15, 690);
 	//background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
+	if (stage != nullptr)
+		delete stage;
 	stage = sf->GetStage(stagenum);
 	stage->LoadBack();
 	upgrade.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
@@ -252,14 +278,18 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	if (num != -1)
 		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9])));
 	if (enemyTowerBlood.GetInteger() <= 0) {
-		enemyTowerBlood.SetInteger(500);
+		win_lose = 1;
+		GotoGameState(GAME_STATE_OVER);
 	}
 	else if (friendTowerBlood.GetInteger() <= 0){
+		win_lose = 0;
 		GotoGameState(GAME_STATE_OVER);
 	}
 	VectorSort();
 	if (callPoint.GetInteger() < callPointTotal.GetInteger())
-		callPoint.Add(1);
+		callPoint.Add(addPoint);
+	if (callPoint.GetInteger() > callPointTotal.GetInteger())
+		callPoint.SetInteger(callPointTotal.GetInteger());
 	for (int i = 0; i < (int)cat_enemy.size(); i++) {
 		if (!cat_friend.empty()) {
 			cat_enemy[i]->isThere(cat_friend[0]->GetAttackRange());
@@ -384,11 +414,13 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		callPoint.Add(-(upgradePoint.GetInteger()));
 		upgradePoint.Add(40);
 		callPointTotal.Add(50);
+		addPoint += 1;
 	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
+	win_lose = 1;
 	GotoGameState(GAME_STATE_OVER);
 }
 

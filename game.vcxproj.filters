@@ -597,5 +597,20 @@
     <Image Include="RES\enemy\e018\e018_knockback_0.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\bitmap11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\lose.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\over_back.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\option.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

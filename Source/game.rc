@@ -332,6 +332,14 @@ IDB_BACK9               BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RE
 
 IDB_BACK10              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\back10.bmp"
 
+IDB_LOSE                BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\lose.bmp"
+
+IDB_WIN                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\win.bmp"
+
+IDB_OVERBACK            BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\over_back.bmp"
+
+IDB_OPTION              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\option.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

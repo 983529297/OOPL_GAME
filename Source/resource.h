@@ -90,8 +90,12 @@
 #define IDB_BACK7                       209
 #define IDB_BACK8                       210
 #define IDB_BACK9                       211
-#define IDB_BITMAP19                    212
 #define IDB_BACK10                      212
+#define IDB_LOSE                        217
+#define IDB_WIN                         218
+#define IDB_OVERBACK                    219
+#define IDB_BITMAP11                    220
+#define IDB_OPTION                      220
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -104,7 +108,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        213
+#define _APS_NEXT_RESOURCE_VALUE        221
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

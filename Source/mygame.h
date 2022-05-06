@@ -51,7 +51,8 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
-	static int stagenum = 2;
+	static int stagenum = 1;
+	static int win_lose = -1; //-1未定 0輸 1贏
 
 	enum AUDIO_ID {				// 定義各種音效的編號
 		AUDIO_DING,				// 0
@@ -75,9 +76,12 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		bool ready = false;
+		int option_bool = 0;
 		double start_size;
+		double option_size;
 		CMovingBitmap logo;								// csie的logo
 		CMovingBitmap start;								// csie的logo
+		CMovingBitmap option;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -126,10 +130,11 @@ namespace game_framework {
 		vector<Cat*> cat_friend;
 		vector<vector<string>> data_enemy;
 		vector<vector<string>> data_friend;
-		Stage *stage;
-		SimpleFactory *sf;
+		Stage *stage = nullptr;
+		SimpleFactory *sf = nullptr;
 		int enemyTowerHitRange;
 		int friendTowerHitRange;
+		int addPoint = 1;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -147,6 +152,9 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		int counter;	// 倒數之計數器
+		CMovingBitmap win;
+		CMovingBitmap lose;
+		CMovingBitmap back;
 	};
 
 }
