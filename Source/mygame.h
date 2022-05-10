@@ -51,7 +51,7 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
-	static int stagenum = 1;
+	static int stagenum = 3;
 	static int win_lose = -1; //-1未定 0輸 1贏
 
 	enum AUDIO_ID {				// 定義各種音效的編號
@@ -76,12 +76,24 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		bool ready = false;
-		int option_bool = 0;
+		int win_state = 0;
 		double start_size;
 		double option_size;
+		double close_size;
+		double goBack_size;
+		double battle_size;
+		double stage1_size, stage2_size, stage3_size, stage4_size, stage5_size, stage6_size, stage7_size, stage8_size, stage9_size, stage10_size;
 		CMovingBitmap logo;								// csie的logo
 		CMovingBitmap start;								// csie的logo
 		CMovingBitmap option;
+		CMovingBitmap win_option;
+		CMovingBitmap close;
+		CMovingBitmap state_back;
+		CMovingBitmap map;
+		CMovingBitmap goBack;
+		CMovingBitmap battle;
+		CMovingBitmap stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
+		int x, y;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

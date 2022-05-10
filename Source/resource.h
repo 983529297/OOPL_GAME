@@ -94,8 +94,24 @@
 #define IDB_LOSE                        217
 #define IDB_WIN                         218
 #define IDB_OVERBACK                    219
-#define IDB_BITMAP11                    220
 #define IDB_OPTION                      220
+#define IDB_MAP                         221
+#define IDB_STAGE1                      222
+#define IDB_STAGE2                      223
+#define IDB_STAGE3                      224
+#define IDB_STAGE4                      225
+#define IDB_STAGE5                      226
+#define IDB_STAGE6                      227
+#define IDB_STAGE7                      228
+#define IDB_STAGE8                      229
+#define IDB_STAGE9                      230
+#define IDB_STAGE10                     231
+#define IDB_STAGE_BACK                  232
+#define IDB_WIN_OPTION                  234
+#define IDB_CLOSE                       236
+#define IDB_GOBACK                      237
+#define IDB_BITMAP11                    238
+#define IDB_BATTLE                      238
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -108,7 +124,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        221
+#define _APS_NEXT_RESOURCE_VALUE        239
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

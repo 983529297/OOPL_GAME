@@ -612,5 +612,56 @@
     <Image Include="RES\option.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\map.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\stage_back.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap12.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\win_option.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\close.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\goBack.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\battle.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

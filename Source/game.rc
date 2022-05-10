@@ -340,6 +340,38 @@ IDB_OVERBACK            BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RE
 
 IDB_OPTION              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\option.bmp"
 
+IDB_MAP                 BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\map.bmp"
+
+IDB_STAGE1              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage1.bmp"
+
+IDB_STAGE2              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage2.bmp"
+
+IDB_STAGE3              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage3.bmp"
+
+IDB_STAGE4              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage4.bmp"
+
+IDB_STAGE5              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage5.bmp"
+
+IDB_STAGE6              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage6.bmp"
+
+IDB_STAGE7              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage7.bmp"
+
+IDB_STAGE8              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage8.bmp"
+
+IDB_STAGE9              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage9.bmp"
+
+IDB_STAGE10             BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage10.bmp"
+
+IDB_STAGE_BACK          BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage_back.bmp"
+
+IDB_WIN_OPTION          BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\win_option.bmp"
+
+IDB_CLOSE               BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\close.bmp"
+
+IDB_GOBACK              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\goBack.bmp"
+
+IDB_BATTLE              BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\battle.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
