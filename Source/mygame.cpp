@@ -329,9 +329,9 @@ void CGameStateInit::OnShow()
 	fp=pDC->SelectObject(&f);					// 選用 font f
 	pDC->SetBkColor(RGB(0,0,0));
 	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "%d, %d", x, y);
-	pDC->TextOut(240,210,str);
+	//char str[80];								// Demo 數字對字串的轉換
+	//sprintf(str, "%d, %d", x, y);
+	//pDC->TextOut(240,210,str);
 	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
 	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }								
@@ -390,9 +390,9 @@ void CGameStateOver::OnShow()
 	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC*/
 	back.ShowBitmap();
 	if (win_lose == 1)
-		win.ShowBitmap();
+	win.ShowBitmap();
 	else
-		lose.ShowBitmap();
+	lose.ShowBitmap();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -582,23 +582,27 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {
+	if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {				//1
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9])));
 		callPoint.Add(-stoi(data_friend[0][10]));
 	}
-	else if (nChar == 0x32 && callPoint.GetInteger() >= stoi(data_friend[1][10])) {
+	else if (nChar == 0x32 && callPoint.GetInteger() >= stoi(data_friend[1][10])) {			//2
 		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9])));
 		callPoint.Add(-stoi(data_friend[1][10]));
 	}
-	else if (nChar == 0x33 && callPoint.GetInteger() >= stoi(data_friend[2][10])) {
+	else if (nChar == 0x33 && callPoint.GetInteger() >= stoi(data_friend[2][10])) {			//3
 		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9])));
 		callPoint.Add(-stoi(data_friend[2][10]));
 	}
-	else if (nChar == 0x34 && callPoint.GetInteger() >= stoi(data_friend[3][10])) {
+	else if (nChar == 0x34 && callPoint.GetInteger() >= stoi(data_friend[3][10])) {			//4
 		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9])));
 		callPoint.Add(-stoi(data_friend[3][10]));
 	}
-	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())
+	else if (nChar == 0x35 && callPoint.GetInteger() >= stoi(data_friend[4][10])) {			//5
+		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9])));
+		callPoint.Add(-stoi(data_friend[3][10]));
+	}
+	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
 	{
 		callPoint.Add(-(upgradePoint.GetInteger()));
 		upgradePoint.Add(40);
