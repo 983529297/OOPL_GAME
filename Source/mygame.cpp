@@ -356,7 +356,7 @@ void CGameStateOver::OnBeginState()
 {
 	win.SetTopLeft((SIZE_X - back.Width()) / 2, 170);
 	lose.SetTopLeft((SIZE_X - back.Width()) / 2, 170);
-	counter = 30 * 5; // 5 seconds
+	counter = 30 * 2; // 5 seconds
 }
 
 void CGameStateOver::OnInit()
