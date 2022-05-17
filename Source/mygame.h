@@ -51,13 +51,15 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
-	static int stagenum = 3;
+	static int stagenum = 1;
 	static int win_lose = -1; //-1未定 0輸 1贏
+	static bool music_op = true;
+	static bool music_game = true;
 
 	enum AUDIO_ID {				// 定義各種音效的編號
-		AUDIO_DING,				// 0
-		AUDIO_LAKE,				// 1
-		AUDIO_NTUT				// 2
+		AUDIO_OP,				// 0
+		AUDIO_NORM,				// 1
+		AUDIO_HARD				// 2
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -77,6 +79,8 @@ namespace game_framework {
 	private:
 		bool ready = false;
 		int win_state = 0;
+		double game_sound_size;
+		double music_sound_size;
 		double start_size;
 		double option_size;
 		double close_size;
@@ -92,6 +96,11 @@ namespace game_framework {
 		CMovingBitmap map;
 		CMovingBitmap goBack;
 		CMovingBitmap battle;
+		CMovingBitmap cat_spot;
+		CMovingBitmap musicSound;
+		CMovingBitmap musicSoundAnti;
+		CMovingBitmap gameSound;
+		CMovingBitmap gameSoundAnti;
 		CMovingBitmap stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
 		int x, y;
 	};

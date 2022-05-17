@@ -61,6 +61,9 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#ifndef _DEBUG
+#define new DEBUG_NEW
+#endif // !_DEBUG
 
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
@@ -74,10 +77,6 @@ CGameStateInit::CGameStateInit(CGame *g)
 
 void CGameStateInit::OnInit()
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
 	ShowInitProgress(0);	// 一開始的loading進度為0%
 	//
 	// 開始載入資料
@@ -101,6 +100,16 @@ void CGameStateInit::OnInit()
 	stage9.LoadBitmap(IDB_STAGE9);
 	stage10.LoadBitmap(IDB_STAGE10);
 	battle.LoadBitmap(IDB_BATTLE, (0, 0, 255));
+	cat_spot.LoadBitmap(IDB_STAGE_SPOT, (1, 1, 1));
+	musicSound.LoadBitmap(IDB_MUSIC_SOUND, (0, 0, 255));
+	musicSoundAnti.LoadBitmap(IDB_MUSIC_SOUND_ANTI, (0, 0, 255));
+	gameSound.LoadBitmap(IDB_GAME_SOUND, (0, 0, 255));
+	gameSoundAnti.LoadBitmap(IDB_GAME_SOUND_ANTI, (0, 0, 255));
+	musicSound.SetTopLeft(530, 403);
+	musicSoundAnti.SetTopLeft(530, 403);
+	gameSound.SetTopLeft(673, 403);
+	gameSoundAnti.SetTopLeft(673, 403);
+	cat_spot.SetTopLeft(985 - cat_spot.Width() + 15, 503);
 	battle.SetTopLeft(870, 630);
 	stage1.SetTopLeft(985, 503);
 	stage2.SetTopLeft(939, 387);
@@ -122,7 +131,7 @@ void CGameStateInit::OnInit()
 	close.SetTopLeft(790, 250);
 	start_size = 0.81;
 	option_size = 0.81;
-	close_size = 1;
+	game_sound_size = music_sound_size = close_size = 1;
 	goBack_size = 1;
 	battle_size = 1;
 	stage1_size = stage2_size = stage3_size = stage4_size = stage5_size = stage6_size = stage7_size = stage8_size = stage9_size = stage10_size = 1;
@@ -130,11 +139,21 @@ void CGameStateInit::OnInit()
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
 	ready = true;
+	CAudio::Instance()->Load(AUDIO_OP, "Sounds\\OP.mp3");
+	if (music_op)
+		CAudio::Instance()->Play(AUDIO_OP, true);
+	else
+		CAudio::Instance()->Stop(AUDIO_OP);
 }
 
 void CGameStateInit::OnBeginState()
 {
-
+	if (ready) {
+		if (music_op)
+			CAudio::Instance()->Play(AUDIO_OP, true);
+		else
+			CAudio::Instance()->Stop(AUDIO_OP);
+	}
 }
 
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -177,9 +196,16 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 				close.SetTopLeft(790 - 5, 250 - 5);
 				close_size = 1.1;
 			}
+			else if (musicSound.Left() < point.x && point.x < musicSound.Left() + musicSound.Width() && musicSound.Top() < point.y && point.y < musicSound.Top() + musicSound.Height()) {
+				music_sound_size = 1.1;
+			}
+			else if (gameSound.Left() < point.x && point.x < gameSound.Left() + gameSound.Width() && gameSound.Top() < point.y && point.y < gameSound.Top() + gameSound.Height()) {
+				game_sound_size = 1.1;
+
+			}
 			else {
 				close.SetTopLeft(790, 250);
-				close_size = 1;
+				game_sound_size = music_sound_size = close_size = 1;
 			}
 		}
 		else {
@@ -254,6 +280,16 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		if (close.Left() < point.x && point.x < close.Left() + close.Width() && close.Top() < point.y && point.y < close.Top() + close.Height()) {
 			win_state = 0;
 		}
+		else if (musicSound.Left() < point.x && point.x < musicSound.Left() + musicSound.Width() && musicSound.Top() < point.y && point.y < musicSound.Top() + musicSound.Height()) {
+			music_op = !music_op;
+			if (music_op)
+				CAudio::Instance()->Play(AUDIO_OP, true);
+			else
+				CAudio::Instance()->Stop(AUDIO_OP);
+		}
+		else if (gameSound.Left() < point.x && point.x < gameSound.Left() + gameSound.Width() && gameSound.Top() < point.y && point.y < gameSound.Top() + gameSound.Height()) {
+			music_game = !music_game;
+		}
 	}
 	else {
 		if (goBack.Left() < point.x && point.x < goBack.Left() + goBack.Width() && goBack.Top() < point.y && point.y < goBack.Top() + goBack.Height()) {
@@ -261,35 +297,46 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 		else if (stage1.Left() < point.x && point.x < stage1.Left() + stage1.Width() && stage1.Top() < point.y && point.y < stage1.Top() + stage1.Height()) {
 			stagenum = 1;
+			cat_spot.SetTopLeft(985 - cat_spot.Width() + 15, 503);
 		}
 		else if (stage2.Left() < point.x && point.x < stage2.Left() + stage2.Width() && stage2.Top() < point.y && point.y < stage2.Top() + stage2.Height()) {
 			stagenum = 2;
+			cat_spot.SetTopLeft(939 - cat_spot.Width() + 15, 387);
 		}
 		else if (stage3.Left() < point.x && point.x < stage3.Left() + stage3.Width() && stage3.Top() < point.y && point.y < stage3.Top() + stage3.Height()) {
 			stagenum = 3;
+			cat_spot.SetTopLeft(868 - cat_spot.Width() + 15, 260);
 		}
 		else if (stage4.Left() < point.x && point.x < stage4.Left() + stage4.Width() && stage4.Top() < point.y && point.y < stage4.Top() + stage4.Height()) {
 			stagenum = 4;
+			cat_spot.SetTopLeft(783 - cat_spot.Width() + 15, 118);
 		}
 		else if (stage5.Left() < point.x && point.x < stage5.Left() + stage5.Width() && stage5.Top() < point.y && point.y < stage5.Top() + stage5.Height()) {
 			stagenum = 5;
+			cat_spot.SetTopLeft(588 - cat_spot.Width() + 15, 180);
 		}
 		else if (stage6.Left() < point.x && point.x < stage6.Left() + stage6.Width() && stage6.Top() < point.y && point.y < stage6.Top() + stage6.Height()) {
 			stagenum = 6;
+			cat_spot.SetTopLeft(691 - cat_spot.Width() + 15, 284);
 		}
 		else if (stage7.Left() < point.x && point.x < stage7.Left() + stage7.Width() && stage7.Top() < point.y && point.y < stage7.Top() + stage7.Height()) {
 			stagenum = 7;
+			cat_spot.SetTopLeft(603 - cat_spot.Width() + 15, 356);
 		}
 		else if (stage8.Left() < point.x && point.x < stage8.Left() + stage8.Width() && stage8.Top() < point.y && point.y < stage8.Top() + stage8.Height()) {
 			stagenum = 8;
+			cat_spot.SetTopLeft(323 - cat_spot.Width() + 15, 443);
 		}
 		else if (stage9.Left() < point.x && point.x < stage9.Left() + stage9.Width() && stage9.Top() < point.y && point.y < stage9.Top() + stage9.Height()) {
 			stagenum = 9;
+			cat_spot.SetTopLeft(208 - cat_spot.Width() + 15, 198);
 		}
 		else if (stage10.Left() < point.x && point.x < stage10.Left() + stage10.Width() && stage10.Top() < point.y && point.y < stage10.Top() + stage10.Height()) {
 			stagenum = 10;
+			cat_spot.SetTopLeft(437 - cat_spot.Width() + 15, 82);
 		}
 		else if (battle.Left() < point.x && point.x < battle.Left() + battle.Width() && battle.Top() < point.y && point.y < battle.Top() + battle.Height()) {
+			CAudio::Instance()->Stop(AUDIO_OP);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	}
@@ -305,6 +352,14 @@ void CGameStateInit::OnShow()
 	else if (win_state == 1) {
 		logo.ShowBitmap();
 		win_option.ShowBitmap();
+		if (music_op)
+			musicSound.ShowBitmap(music_sound_size);
+		else
+			musicSoundAnti.ShowBitmap(music_sound_size);
+		if (music_game)
+			gameSound.ShowBitmap(game_sound_size);
+		else
+			gameSoundAnti.ShowBitmap(game_sound_size);
 		close.ShowBitmap(close_size);
 	}
 	else {
@@ -322,6 +377,7 @@ void CGameStateInit::OnShow()
 		stage9.ShowBitmap(stage9_size);
 		stage10.ShowBitmap(stage10_size);
 		battle.ShowBitmap(battle_size);
+		cat_spot.ShowBitmap(0.6);
 	}
 	CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC
 	CFont f,*fp;
@@ -329,9 +385,9 @@ void CGameStateInit::OnShow()
 	fp=pDC->SelectObject(&f);					// 選用 font f
 	pDC->SetBkColor(RGB(0,0,0));
 	pDC->SetTextColor(RGB(255,255,0));
-	//char str[80];								// Demo 數字對字串的轉換
-	//sprintf(str, "%d, %d", x, y);
-	//pDC->TextOut(240,210,str);
+	char str[80];								// Demo 數字對字串的轉換
+	sprintf(str, "%d, %d", x, y);
+	pDC->TextOut(240,210,str);
 	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
 	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }								
@@ -377,7 +433,7 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-	/*CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+	CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
 	CFont f,*fp;
 	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
 	fp=pDC->SelectObject(&f);					// 選用 font f
@@ -387,7 +443,7 @@ void CGameStateOver::OnShow()
 	sprintf(str, "Game Over ! (%d)", counter / 30);
 	pDC->TextOut(240,210,str);
 	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC*/
+	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 	back.ShowBitmap();
 	if (win_lose == 1)
 	win.ShowBitmap();
@@ -431,8 +487,23 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-	cat_enemy.clear();
-	cat_friend.clear();
+	addPoint = 1;
+	//cat_enemy.clear();
+	//cat_friend.clear();
+	if (!cat_enemy.empty())
+	{
+		for (int i = 0; i < (int)cat_enemy.size(); i++) {
+			delete cat_enemy[i];
+		}
+		cat_enemy.clear();
+	}
+	if (!cat_friend.empty())
+	{
+		for (int i = 0; i < (int)cat_friend.size(); i++) {
+			delete cat_friend[i];
+		}
+		cat_friend.clear();
+	}
 	callPoint.SetInteger(0);
 	callPoint.SetTopLeft(820, 0);
 	callPointTotal.SetInteger(50);
@@ -457,6 +528,14 @@ void CGameStateRun::OnBeginState()
 	stage->LoadBack();
 	upgrade.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
 	upgrade_black.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
+	if (music_game) {
+		CAudio::Instance()->Play(AUDIO_NORM, true);
+		CAudio::Instance()->Play(AUDIO_HARD, true);
+	}
+	else {
+		CAudio::Instance()->Stop(AUDIO_NORM);
+		CAudio::Instance()->Stop(AUDIO_HARD);
+	}
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -468,10 +547,14 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9])));
 	if (enemyTowerBlood.GetInteger() <= 0) {
 		win_lose = 1;
+		CAudio::Instance()->Stop(AUDIO_NORM);
+		CAudio::Instance()->Stop(AUDIO_HARD);
 		GotoGameState(GAME_STATE_OVER);
 	}
 	else if (friendTowerBlood.GetInteger() <= 0){
 		win_lose = 0;
+		CAudio::Instance()->Stop(AUDIO_NORM);
+		CAudio::Instance()->Stop(AUDIO_HARD);
 		GotoGameState(GAME_STATE_OVER);
 	}
 	VectorSort();
@@ -573,6 +656,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	ShowInitProgress(50);
 	this->enemyTowerHitRange = tower_enemy.GetHitBox();
 	this->friendTowerHitRange = tower_friend.GetHitBox();
+	CAudio::Instance()->Load(AUDIO_NORM, "Sounds\\NORM.mp3");
+	CAudio::Instance()->Load(AUDIO_HARD, "Sounds\\HARD.mp3");
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -614,6 +699,8 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
 	win_lose = 1;
+	CAudio::Instance()->Stop(AUDIO_NORM);
+	CAudio::Instance()->Stop(AUDIO_HARD);
 	GotoGameState(GAME_STATE_OVER);
 }
 
