@@ -667,23 +667,23 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {				//1
+	if (nChar == 0x31) {				//1
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9]), stoi(data_friend[0][5])));
 		callPoint.Add(-stoi(data_friend[0][10]));
 	}
-	else if (nChar == 0x32 && callPoint.GetInteger() >= stoi(data_friend[1][10])) {			//2
+	else if (nChar == 0x32) {			//2
 		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9]), stoi(data_friend[1][5])));
 		callPoint.Add(-stoi(data_friend[1][10]));
 	}
-	else if (nChar == 0x33 && callPoint.GetInteger() >= stoi(data_friend[2][10])) {			//3
+	else if (nChar == 0x33) {			//3
 		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9]), stoi(data_friend[2][5])));
 		callPoint.Add(-stoi(data_friend[2][10]));
 	}
-	else if (nChar == 0x34 && callPoint.GetInteger() >= stoi(data_friend[3][10])) {			//4
+	else if (nChar == 0x34) {			//4
 		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9]), stoi(data_friend[3][5])));
 		callPoint.Add(-stoi(data_friend[3][10]));
 	}
-	else if (nChar == 0x35 && callPoint.GetInteger() >= stoi(data_friend[4][10])) {			//5
+	else if (nChar == 0x35) {			//5
 		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
 		callPoint.Add(-stoi(data_friend[3][10]));
 	}
@@ -817,21 +817,21 @@ void CGameStateRun::VectorSort() {
 void CGameStateRun::readCSV() {
 	//name, ap, hp, dp, ms, as, at, range, attack_pic, walk_pic, cost
 	data_enemy = {
-		{"e000", "100", "200", "50", "3", "5", "single", "5", "4", "3"},
-		{"e001", "100", "200", "50", "3", "5", "single", "5", "4", "4"},
-		{"e005", "100", "200", "50", "3", "5", "single", "5", "7", "11"},
-		{"e012", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
-		{"e013", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
-		{"e015", "100", "200", "50", "3", "5", "single", "5", "4", "5"},
-		{"e016", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
-		{"e018", "100", "200", "50", "3", "5", "single", "5", "3", "3"},
+		{"e000", "100", "200", "50", "3", "7", "single", "5", "4", "3"},
+		{"e001", "100", "200", "50", "3", "7", "single", "5", "4", "4"},
+		{"e005", "100", "200", "50", "3", "7", "single", "5", "7", "11"},
+		{"e012", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
+		{"e013", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
+		{"e015", "100", "200", "50", "3", "7", "single", "5", "4", "5"},
+		{"e016", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
+		{"e018", "100", "200", "50", "3", "7", "single", "5", "3", "3"},
 	};
 	data_friend = {
-		{"f000", "100", "200", "50", "3", "5", "single", "5", "4", "3", "50"},
-		{"f001", "100", "200", "50", "2", "5", "single", "5", "4", "3", "50"},
-		{"f004", "100", "200", "50", "2", "5", "single", "5", "4", "4", "50"},
-		{"f008", "100", "200", "50", "2", "5", "single", "5", "7", "6", "50"},
-		{"f018", "100", "200", "50", "2", "5", "single", "5", "8", "4", "50"},
+		{"f000", "100", "200", "50", "3", "7", "single", "5", "4", "3", "50"},
+		{"f001", "100", "200", "50", "2", "7", "single", "5", "4", "3", "50"},
+		{"f004", "100", "200", "50", "2", "7", "single", "5", "4", "4", "50"},
+		{"f008", "100", "200", "50", "2", "7", "single", "5", "7", "6", "50"},
+		{"f018", "100", "200", "50", "2", "3", "single", "5", "8", "4", "50"},
 	};
 	/*ifstream infile_friend("data_friend.csv", ios::in);
 	if (!infile_friend) {
