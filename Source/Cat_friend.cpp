@@ -10,7 +10,7 @@
 
 namespace game_framework {
 
-	Cat_friend::Cat_friend(string name, int blood, int attack, int defence, int speed, int attack_pic, int walk_pic) {
+	Cat_friend::Cat_friend(string name, int blood, int attack, int defence, int speed, int attack_pic, int walk_pic, int as) {
 		srand((unsigned)time(NULL));
 		int random = rand() % 20;
 		this->name = name;
@@ -21,6 +21,7 @@ namespace game_framework {
 		this->speedPoint = speed;
 		this->attack_pic = attack_pic;
 		this->walk_pic = walk_pic;
+		this->attackSpeed = as;
 		LoadBitmap_Walk();
 		LoadBitmap_Attack();
 		SetXY(1050 , 530 + random - animation_walk.Height());
@@ -160,6 +161,7 @@ namespace game_framework {
 			char* path = (char*)attackPath.at(i).c_str();
 			animation_attack.AddBitmap(path, RGB(1, 1, 1));
 		}
+		animation_attack.SetDelayCount(attackSpeed);
 	}
 
 	void Cat_friend::OnShow_Walk() {

@@ -544,7 +544,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	int num = stage->getEnemyNum();
 	int weight = 1;
 	if (num != -1)
-		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9])));
+		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9]), stoi(data_enemy[num][5])));
 	if (enemyTowerBlood.GetInteger() <= 0) {
 		win_lose = 1;
 		CAudio::Instance()->Stop(AUDIO_NORM);
@@ -668,23 +668,23 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == 0x31 && callPoint.GetInteger() >= stoi(data_friend[0][10])) {				//1
-		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9])));
+		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9]), stoi(data_friend[0][5])));
 		callPoint.Add(-stoi(data_friend[0][10]));
 	}
 	else if (nChar == 0x32 && callPoint.GetInteger() >= stoi(data_friend[1][10])) {			//2
-		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9])));
+		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9]), stoi(data_friend[1][5])));
 		callPoint.Add(-stoi(data_friend[1][10]));
 	}
 	else if (nChar == 0x33 && callPoint.GetInteger() >= stoi(data_friend[2][10])) {			//3
-		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9])));
+		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9]), stoi(data_friend[2][5])));
 		callPoint.Add(-stoi(data_friend[2][10]));
 	}
 	else if (nChar == 0x34 && callPoint.GetInteger() >= stoi(data_friend[3][10])) {			//4
-		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9])));
+		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9]), stoi(data_friend[3][5])));
 		callPoint.Add(-stoi(data_friend[3][10]));
 	}
 	else if (nChar == 0x35 && callPoint.GetInteger() >= stoi(data_friend[4][10])) {			//5
-		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9])));
+		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
 		callPoint.Add(-stoi(data_friend[3][10]));
 	}
 	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
@@ -697,11 +697,39 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
-{
+{//name, hp, ap, dp, ms, attack_pic, walk_pic, as
+	if (block[0].Left() < point.x && point.x < block[0].Left() + block[0].Width() && block[0].Top() < point.y && point.y < block[0].Top() + block[0].Height() && callPoint.GetInteger() >= stoi(data_friend[0][10])) {				//1
+		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9]), stoi(data_friend[0][5])));
+		callPoint.Add(-stoi(data_friend[0][10]));
+	}
+	else if (block[1].Left() < point.x && point.x < block[1].Left() + block[1].Width() && block[1].Top() < point.y && point.y < block[1].Top() + block[1].Height() && callPoint.GetInteger() >= stoi(data_friend[1][10])) {			//2
+		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9]), stoi(data_friend[1][5])));
+		callPoint.Add(-stoi(data_friend[1][10]));
+	}
+	else if (block[2].Left() < point.x && point.x < block[2].Left() + block[2].Width() && block[0].Top() < point.y && point.y < block[2].Top() + block[2].Height() && callPoint.GetInteger() >= stoi(data_friend[2][10])) {			//3
+		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9]), stoi(data_friend[2][5])));
+		callPoint.Add(-stoi(data_friend[2][10]));
+	}
+	else if (block[3].Left() < point.x && point.x < block[3].Left() + block[3].Width() && block[0].Top() < point.y && point.y < block[3].Top() + block[3].Height() && callPoint.GetInteger() >= stoi(data_friend[3][10])) {			//4
+		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9]), stoi(data_friend[3][5])));
+		callPoint.Add(-stoi(data_friend[3][10]));
+	}
+	else if (block[4].Left() < point.x && point.x < block[4].Left() + block[4].Width() && block[0].Top() < point.y && point.y < block[4].Top() + block[4].Height() && callPoint.GetInteger() >= stoi(data_friend[4][10])) {			//5
+		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
+		callPoint.Add(-stoi(data_friend[3][10]));
+	}
+	else if (upgrade.Left() < point.x && point.x < upgrade.Left() + upgrade.Width() && upgrade.Top() < point.y && point.y < upgrade.Top() + upgrade.Height() && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
+	{
+		callPoint.Add(-(upgradePoint.GetInteger()));
+		upgradePoint.Add(40);
+		callPointTotal.Add(50);
+		addPoint += 1;
+	}
+	/*
 	win_lose = 1;
 	CAudio::Instance()->Stop(AUDIO_NORM);
 	CAudio::Instance()->Stop(AUDIO_HARD);
-	GotoGameState(GAME_STATE_OVER);
+	GotoGameState(GAME_STATE_OVER);*/
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -787,6 +815,7 @@ void CGameStateRun::VectorSort() {
 }
 
 void CGameStateRun::readCSV() {
+	//name, ap, hp, dp, ms, as, at, range, attack_pic, walk_pic, cost
 	data_enemy = {
 		{"e000", "100", "200", "50", "3", "5", "single", "5", "4", "3"},
 		{"e001", "100", "200", "50", "3", "5", "single", "5", "4", "4"},
