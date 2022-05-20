@@ -787,7 +787,24 @@ void CGameStateRun::VectorSort() {
 }
 
 void CGameStateRun::readCSV() {
-	ifstream infile_friend("data_friend.csv", ios::in);
+	data_enemy = {
+		{"e000", "100", "200", "50", "3", "5", "single", "5", "4", "3"},
+		{"e001", "100", "200", "50", "3", "5", "single", "5", "4", "4"},
+		{"e005", "100", "200", "50", "3", "5", "single", "5", "7", "11"},
+		{"e012", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
+		{"e013", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
+		{"e015", "100", "200", "50", "3", "5", "single", "5", "4", "5"},
+		{"e016", "100", "200", "50", "3", "5", "single", "5", "3", "6"},
+		{"e018", "100", "200", "50", "3", "5", "single", "5", "3", "3"},
+	};
+	data_friend = {
+		{"f000", "100", "200", "50", "3", "5", "single", "5", "4", "3", "50"},
+		{"f001", "100", "200", "50", "2", "5", "single", "5", "4", "3", "50"},
+		{"f004", "100", "200", "50", "2", "5", "single", "5", "4", "4", "50"},
+		{"f008", "100", "200", "50", "2", "5", "single", "5", "7", "6", "50"},
+		{"f018", "100", "200", "50", "2", "5", "single", "5", "8", "4", "50"},
+	};
+	/*ifstream infile_friend("data_friend.csv", ios::in);
 	if (!infile_friend) {
 		exit(1);
 	}
@@ -806,8 +823,6 @@ void CGameStateRun::readCSV() {
 	if (!infile_enemy) {
 		exit(1);
 	}
-	//string line;
-	//string str;
 	getline(infile_enemy, line);
 	while (getline(infile_enemy, line)) {
 		stringstream sstream(line);
@@ -816,6 +831,6 @@ void CGameStateRun::readCSV() {
 			one_cat.push_back(str);
 		}
 		data_enemy.push_back(one_cat);
-	}
+	}*/
 }
 }
