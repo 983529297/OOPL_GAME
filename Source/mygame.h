@@ -156,6 +156,7 @@ namespace game_framework {
 		int enemyTowerHitRange;
 		int friendTowerHitRange;
 		int addPoint = 1;
+		int x, y;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

@@ -105,32 +105,32 @@ void CGameStateInit::OnInit()
 	musicSoundAnti.LoadBitmap(IDB_MUSIC_SOUND_ANTI, (0, 0, 255));
 	gameSound.LoadBitmap(IDB_GAME_SOUND, (0, 0, 255));
 	gameSoundAnti.LoadBitmap(IDB_GAME_SOUND_ANTI, (0, 0, 255));
-	musicSound.SetTopLeft(530, 403);
-	musicSoundAnti.SetTopLeft(530, 403);
-	gameSound.SetTopLeft(673, 403);
-	gameSoundAnti.SetTopLeft(673, 403);
-	cat_spot.SetTopLeft(985 - cat_spot.Width() + 15, 503);
-	battle.SetTopLeft(870, 630);
-	stage1.SetTopLeft(985, 503);
-	stage2.SetTopLeft(939, 387);
-	stage3.SetTopLeft(868, 260);
-	stage4.SetTopLeft(783, 118);
-	stage5.SetTopLeft(588, 180);
-	stage6.SetTopLeft(691, 284);
-	stage7.SetTopLeft(603, 356);
-	stage8.SetTopLeft(323, 443);
-	stage9.SetTopLeft(208, 198);
-	stage10.SetTopLeft(437, 82);
-	goBack.SetTopLeft((SIZE_X - logo.Width()) / 2, 610);
-	map.SetTopLeft((SIZE_X - logo.Width()) / 2, 62);
+	musicSound.SetTopLeft(730, 403);
+	musicSoundAnti.SetTopLeft(730, 403);
+	gameSound.SetTopLeft(873, 403);
+	gameSoundAnti.SetTopLeft(873, 403);
+	cat_spot.SetTopLeft(1374 - cat_spot.Width() + 15, 733);
+	battle.SetTopLeft(1300, 968);
+	stage1.SetTopLeft(1374, 733);
+	stage2.SetTopLeft(1301, 565);
+	stage3.SetTopLeft(1191, 377);
+	stage4.SetTopLeft(1058, 170);
+	stage5.SetTopLeft(756, 259);
+	stage6.SetTopLeft(915, 414);
+	stage7.SetTopLeft(779, 518);
+	stage8.SetTopLeft(345, 644);
+	stage9.SetTopLeft(166, 288);
+	stage10.SetTopLeft(521, 116);
+	goBack.SetTopLeft((SIZE_X - logo.Width()) / 2 + 5, 890);
+	map.SetTopLeft((SIZE_X - logo.Width()) / 2, 89);
 	logo.SetTopLeft((SIZE_X - logo.Width()) / 2, 0);//SIZE_Y/8);
 	state_back.SetTopLeft((SIZE_X - logo.Width()) / 2, 0);//SIZE_Y/8);
-	start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
-	option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
+	start.SetTopLeft(552, 582);//SIZE_Y/8);
+	option.SetTopLeft(555, 729);//SIZE_Y/8);
 	win_option.SetTopLeft(SIZE_X / 2 - 185, 250);//SIZE_Y/8);
-	close.SetTopLeft(790, 250);
-	start_size = 0.81;
-	option_size = 0.81;
+	close.SetTopLeft(980, 250);//790
+	start_size = 1;
+	option_size = 1;
 	game_sound_size = music_sound_size = close_size = 1;
 	goBack_size = 1;
 	battle_size = 1;
@@ -173,27 +173,27 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	if (ready) {
 		if (win_state == 0) {
 			if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height()) {
-				start_size = 0.9;
-				start.SetTopLeft(SIZE_X / 2 - 205, 390);//SIZE_Y/8);
-				option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
-				option_size = 0.81;
+				start_size = 1.1;
+				start.SetTopLeft(552, 582);//SIZE_Y/8);
+				option.SetTopLeft(555, 729);//SIZE_Y/8);
+				option_size = 1;
 			}
 			else if (option.Left() < point.x && point.x < option.Left() + option.Width() && option.Top() < point.y && point.y < option.Top() + option.Height()){
-				option_size = 0.9;
-				option.SetTopLeft(SIZE_X / 2 - 205, 491);//SIZE_Y/8);
-				start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
-				start_size = 0.81;
+				option_size = 1.1;
+				option.SetTopLeft(555, 729);//SIZE_Y/8);
+				start.SetTopLeft(552, 582);//SIZE_Y/8);
+				start_size = 1;
 			}
 			else {
-				start.SetTopLeft(SIZE_X / 2 - 185, 399);//SIZE_Y/8);
-				option.SetTopLeft(SIZE_X / 2 - 185, 500);//SIZE_Y/8);
-				option_size = 0.81;
-				start_size = 0.81;
+				start.SetTopLeft(552, 582);//SIZE_Y/8);
+				option.SetTopLeft(555, 729);//SIZE_Y/8);
+				option_size = 1;
+				start_size = 1;
 			}
 		}
 		else if (win_state == 1){
 			if (close.Left() < point.x && point.x < close.Left() + close.Width() && close.Top() < point.y && point.y < close.Top() + close.Height()) {
-				close.SetTopLeft(790 - 5, 250 - 5);
+				close.SetTopLeft(990 - 5, 250 - 5);
 				close_size = 1.1;
 			}
 			else if (musicSound.Left() < point.x && point.x < musicSound.Left() + musicSound.Width() && musicSound.Top() < point.y && point.y < musicSound.Top() + musicSound.Height()) {
@@ -204,13 +204,13 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 			}
 			else {
-				close.SetTopLeft(790, 250);
+				close.SetTopLeft(990, 250);
 				game_sound_size = music_sound_size = close_size = 1;
 			}
 		}
 		else {
 			if (goBack.Left() < point.x && point.x < goBack.Left() + goBack.Width() && goBack.Top() < point.y && point.y < goBack.Top() + goBack.Height()) {
-				goBack.SetTopLeft((SIZE_X - logo.Width()) / 2 - 5, 610 - 5);
+				goBack.SetTopLeft((SIZE_X - logo.Width()) / 2 - 5, 900 - 5);
 				goBack_size = 1.1;
 			}
 			else if (stage1.Left() < point.x && point.x < stage1.Left() + stage1.Width() && stage1.Top() < point.y && point.y < stage1.Top() + stage1.Height()) {
@@ -253,14 +253,14 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			}
 			else if (battle.Left() < point.x && point.x < battle.Left() + battle.Width() && battle.Top() < point.y && point.y < battle.Top() + battle.Height()) {
 				battle_size = 1.1;
-				battle.SetTopLeft(850, 625);
+				battle.SetTopLeft(1300, 961);
 			}
 			else {
-				goBack.SetTopLeft((SIZE_X - logo.Width()) / 2, 610);
+				goBack.SetTopLeft((SIZE_X - logo.Width()) / 2 + 5, 890);
 				goBack_size = 1;
 				stage1_size = stage2_size = stage3_size = stage4_size = stage5_size = stage6_size = stage7_size = stage8_size = stage9_size = stage10_size = 1;
 				battle_size = 1;
-				battle.SetTopLeft(870, 630);
+				battle.SetTopLeft(1300, 966);
 			}
 		}
 	}
@@ -297,43 +297,43 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 		else if (stage1.Left() < point.x && point.x < stage1.Left() + stage1.Width() && stage1.Top() < point.y && point.y < stage1.Top() + stage1.Height()) {
 			stagenum = 1;
-			cat_spot.SetTopLeft(985 - cat_spot.Width() + 15, 503);
+			cat_spot.SetTopLeft(stage1.Left() - cat_spot.Width() + 15, stage1.Top());
 		}
 		else if (stage2.Left() < point.x && point.x < stage2.Left() + stage2.Width() && stage2.Top() < point.y && point.y < stage2.Top() + stage2.Height()) {
 			stagenum = 2;
-			cat_spot.SetTopLeft(939 - cat_spot.Width() + 15, 387);
+			cat_spot.SetTopLeft(stage2.Left() - cat_spot.Width() + 15, stage2.Top());
 		}
 		else if (stage3.Left() < point.x && point.x < stage3.Left() + stage3.Width() && stage3.Top() < point.y && point.y < stage3.Top() + stage3.Height()) {
 			stagenum = 3;
-			cat_spot.SetTopLeft(868 - cat_spot.Width() + 15, 260);
+			cat_spot.SetTopLeft(stage3.Left() - cat_spot.Width() + 15, stage3.Top());
 		}
 		else if (stage4.Left() < point.x && point.x < stage4.Left() + stage4.Width() && stage4.Top() < point.y && point.y < stage4.Top() + stage4.Height()) {
 			stagenum = 4;
-			cat_spot.SetTopLeft(783 - cat_spot.Width() + 15, 118);
+			cat_spot.SetTopLeft(stage4.Left() - cat_spot.Width() + 15, stage4.Top());
 		}
 		else if (stage5.Left() < point.x && point.x < stage5.Left() + stage5.Width() && stage5.Top() < point.y && point.y < stage5.Top() + stage5.Height()) {
 			stagenum = 5;
-			cat_spot.SetTopLeft(588 - cat_spot.Width() + 15, 180);
+			cat_spot.SetTopLeft(stage5.Left() - cat_spot.Width() + 15, stage5.Top());
 		}
 		else if (stage6.Left() < point.x && point.x < stage6.Left() + stage6.Width() && stage6.Top() < point.y && point.y < stage6.Top() + stage6.Height()) {
 			stagenum = 6;
-			cat_spot.SetTopLeft(691 - cat_spot.Width() + 15, 284);
+			cat_spot.SetTopLeft(stage6.Left() - cat_spot.Width() + 15, stage6.Top());
 		}
 		else if (stage7.Left() < point.x && point.x < stage7.Left() + stage7.Width() && stage7.Top() < point.y && point.y < stage7.Top() + stage7.Height()) {
 			stagenum = 7;
-			cat_spot.SetTopLeft(603 - cat_spot.Width() + 15, 356);
+			cat_spot.SetTopLeft(stage7.Left() - cat_spot.Width() + 15, stage7.Top());
 		}
 		else if (stage8.Left() < point.x && point.x < stage8.Left() + stage8.Width() && stage8.Top() < point.y && point.y < stage8.Top() + stage8.Height()) {
 			stagenum = 8;
-			cat_spot.SetTopLeft(323 - cat_spot.Width() + 15, 443);
+			cat_spot.SetTopLeft(stage8.Left() - cat_spot.Width() + 15, stage8.Top());
 		}
 		else if (stage9.Left() < point.x && point.x < stage9.Left() + stage9.Width() && stage9.Top() < point.y && point.y < stage9.Top() + stage9.Height()) {
 			stagenum = 9;
-			cat_spot.SetTopLeft(208 - cat_spot.Width() + 15, 198);
+			cat_spot.SetTopLeft(stage9.Left() - cat_spot.Width() + 15, stage9.Top());
 		}
 		else if (stage10.Left() < point.x && point.x < stage10.Left() + stage10.Width() && stage10.Top() < point.y && point.y < stage10.Top() + stage10.Height()) {
 			stagenum = 10;
-			cat_spot.SetTopLeft(437 - cat_spot.Width() + 15, 82);
+			cat_spot.SetTopLeft(stage10.Left() - cat_spot.Width() + 15, stage10.Top());
 		}
 		else if (battle.Left() < point.x && point.x < battle.Left() + battle.Width() && battle.Top() < point.y && point.y < battle.Top() + battle.Height()) {
 			CAudio::Instance()->Stop(AUDIO_OP);
@@ -509,25 +509,25 @@ void CGameStateRun::OnBeginState()
 	callPointTotal.SetInteger(50);
 	callPointTotal.SetTopLeft(1000, 0);
 	friendTowerBlood.SetInteger(5000);
-	friendTowerBlood.SetTopLeft(900, 220);
+	friendTowerBlood.SetTopLeft(1360, 480);
 	friendTowerBloodTotal.SetInteger(5000);
-	friendTowerBloodTotal.SetTopLeft(980, 220);
+	friendTowerBloodTotal.SetTopLeft(1440, 480);
 	enemyTowerBlood.SetInteger(500);
-	enemyTowerBlood.SetTopLeft(-30, 220);
+	enemyTowerBlood.SetTopLeft(-100, 480);
 	enemyTowerBloodTotal.SetInteger(500);
-	enemyTowerBloodTotal.SetTopLeft(50, 220);
+	enemyTowerBloodTotal.SetTopLeft(-20, 480);
 	slash.SetTopLeft(970, 5);
-	slash_T.SetTopLeft(1100, 225);
-	slash_T_1.SetTopLeft(170, 225);
+	slash_T.SetTopLeft(1560, 485);
+	slash_T_1.SetTopLeft(100, 485);
 	upgradePoint.SetInteger(40);
-	upgradePoint.SetTopLeft(-15, 690);
+	upgradePoint.SetTopLeft(-100, 1010);
 	//background.SetTopLeft((SIZE_X - background.Width()) / 2, 0);
 	if (stage != nullptr)
 		delete stage;
 	stage = sf->GetStage(stagenum);
 	stage->LoadBack();
-	upgrade.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
-	upgrade_black.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, 555);
+	upgrade.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, SIZE_Y - upgrade.Height());
+	upgrade_black.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, SIZE_Y - upgrade_black.Height());
 	if (music_game) {
 		CAudio::Instance()->Play(AUDIO_NORM, true);
 		CAudio::Instance()->Play(AUDIO_HARD, true);
@@ -669,23 +669,19 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == 0x31) {				//1
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9]), stoi(data_friend[0][5])));
-		callPoint.Add(-stoi(data_friend[0][10]));
 	}
 	else if (nChar == 0x32) {			//2
 		cat_friend.push_back(new Cat_friend(data_friend[1][0], stoi(data_friend[1][2]), stoi(data_friend[1][1]), stoi(data_friend[1][3]), stoi(data_friend[1][4]), stoi(data_friend[1][8]), stoi(data_friend[1][9]), stoi(data_friend[1][5])));
-		callPoint.Add(-stoi(data_friend[1][10]));
 	}
 	else if (nChar == 0x33) {			//3
 		cat_friend.push_back(new Cat_friend(data_friend[2][0], stoi(data_friend[2][2]), stoi(data_friend[2][1]), stoi(data_friend[2][3]), stoi(data_friend[2][4]), stoi(data_friend[2][8]), stoi(data_friend[2][9]), stoi(data_friend[2][5])));
-		callPoint.Add(-stoi(data_friend[2][10]));
+		
 	}
 	else if (nChar == 0x34) {			//4
 		cat_friend.push_back(new Cat_friend(data_friend[3][0], stoi(data_friend[3][2]), stoi(data_friend[3][1]), stoi(data_friend[3][3]), stoi(data_friend[3][4]), stoi(data_friend[3][8]), stoi(data_friend[3][9]), stoi(data_friend[3][5])));
-		callPoint.Add(-stoi(data_friend[3][10]));
 	}
 	else if (nChar == 0x35) {			//5
 		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
-		callPoint.Add(-stoi(data_friend[3][10]));
 	}
 	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
 	{
@@ -739,6 +735,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
+	x = point.x;
+	y = point.y;
 	// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
 }
 
@@ -757,7 +755,7 @@ void CGameStateRun::OnShow()
 	//background.ShowBitmap();
 	stage->OnShowBack();
 	for (int i = 0; i < 5; i++) {
-		block[i].SetTopLeft(330 + 160 * i, 600);
+		block[i].SetTopLeft(330 + 160 * i, 900);
 		block[i].ShowBitmap();
 	}
 	tower_friend.OnShow();
@@ -802,6 +800,17 @@ void CGameStateRun::OnShow()
 			}
 		}
 	}
+	CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC
+	CFont f, * fp;
+	f.CreatePointFont(160, "Times New Roman");	// 產生 font f; 160表示16 point的字
+	fp = pDC->SelectObject(&f);					// 選用 font f
+	pDC->SetBkColor(RGB(0, 0, 0));
+	pDC->SetTextColor(RGB(255, 255, 0));
+	char str[80];								// Demo 數字對字串的轉換
+	sprintf(str, "%d, %d", x, y);
+	pDC->TextOut(240, 210, str);
+	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
+	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }
 void CGameStateRun::VectorSort() {
 	for (unsigned i = 1; i < cat_enemy.size(); i++) {

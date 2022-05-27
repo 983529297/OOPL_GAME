@@ -11,7 +11,7 @@ namespace game_framework {
 
 	Tower_enemy::Tower_enemy() {
 		this->is_alive = 1;
-		SetXY(70, 220);
+		SetXY(0, 470); //220
 	}
 
 	Tower_enemy::~Tower_enemy() {

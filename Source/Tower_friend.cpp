@@ -11,7 +11,7 @@ namespace game_framework {
 
 	Tower_friend::Tower_friend() {
 		this->is_alive = 1;
-		SetXY(1000, 250);
+		SetXY(1470, 500);
 	}
 
 	Tower_friend::~Tower_friend() {
