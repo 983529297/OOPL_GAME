@@ -536,13 +536,15 @@ void CGameStateRun::OnBeginState()
 		CAudio::Instance()->Stop(AUDIO_NORM);
 		//CAudio::Instance()->Stop(AUDIO_HARD);
 	}
+	if (stagenum != 10)
+		weight = (stagenum - 1) % 3 + 1;
 }
 
 void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 {
 	stage->countEnemyNum();
 	int num = stage->getEnemyNum();
-	int weight = 1;
+	//int weight = (stagenum - 1) % 3;
 	if (num != -1)
 		cat_enemy.push_back(new Cat_enemy(data_enemy[num][0], stoi(data_enemy[num][2]) * weight, stoi(data_enemy[num][1]) * (weight / 10 + 1), stoi(data_enemy[num][3]), stoi(data_enemy[num][4]), stoi(data_enemy[num][8]), stoi(data_enemy[num][9]), stoi(data_enemy[num][5])));
 	if (enemyTowerBlood.GetInteger() <= 0) {
@@ -824,21 +826,21 @@ void CGameStateRun::VectorSort() {
 void CGameStateRun::readCSV() {
 	//name, ap, hp, ws, ms, as, at, range, attack_pic, walk_pic, cost
 	data_enemy = {
-		{"e000", "8", "90", "10", "3", "5", "single", "5", "4", "3"},
-		{"e001", "15", "100", "5", "3", "4", "single", "5", "4", "4"},
-		{"e005", "80", "1200", "5", "3", "2", "single", "5", "7", "11"},
-		{"e012", "1000", "3000", "7", "3", "5", "single", "5", "3", "6"},
-		{"e013", "30", "70", "10", "3", "2", "single", "5", "3", "6"},
-		{"e015", "30", "80", "5", "3", "2", "single", "5", "4", "5"},
+		{"e000", "8", "90", "10", "3", "12", "single", "5", "4", "3"},
+		{"e001", "15", "100", "5", "3", "9", "single", "5", "4", "4"},
+		{"e013", "30", "70", "10", "3", "4", "single", "5", "3", "6"},
+		{"e015", "30", "80", "5", "3", "5", "single", "5", "4", "5"},
+		{"e005", "80", "1200", "5", "3", "8", "single", "5", "7", "11"},
+		{"e012", "1000", "3000", "7", "3", "27", "single", "5", "3", "6"},
 		{"e016", "3000", "550", "7", "3", "3", "single", "5", "3", "6"},
-		{"e018", "2000", "99999", "10", "3", "5", "single", "5", "3", "3"},
+		{"e018", "2000", "99999", "10", "3", "10", "single", "5", "3", "3"},
 	};
 	data_friend = {
-		{"f000", "355", "4450", "10", "3", "4", "single", "5", "4", "3", "50"},
-		{"f001", "90", "17800", "10", "2", "7", "single", "5", "4", "3", "50"},
-		{"f004", "577", "22550", "5", "2", "4", "single", "5", "4", "4", "100"},
-		{"f008", "12460", "44500", "10", "2", "7", "single", "5", "7", "6", "150"},
-		{"f018", "474", "4080", "10", "2", "2", "single", "5", "8", "4", "70"},
+		{"f000", "355", "4450", "10", "3", "9", "single", "5", "4", "3", "50"},
+		{"f001", "90", "17800", "10", "2", "16", "single", "5", "4", "3", "50"},
+		{"f004", "577", "22550", "5", "2", "3", "single", "5", "4", "4", "100"},
+		{"f008", "12460", "44500", "10", "2", "9", "single", "5", "7", "6", "150"},
+		{"f018", "474", "4080", "10", "2", "5", "single", "5", "8", "4", "70"},
 	};
 	/*ifstream infile_friend("data_friend.csv", ios::in);
 	if (!infile_friend) {

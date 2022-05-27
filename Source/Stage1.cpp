@@ -20,8 +20,19 @@ namespace game_framework {
 	void Stage1::countEnemyNum() {
 		if (--dc == 0) {
 			srand((unsigned)time(NULL));
-			int random = rand() % 8;
-			enemynum = random;
+			int random = rand() % 29;
+			if (random < 20) {
+				enemynum = rand() % 4;
+			}
+			else if (random < 24) {
+				enemynum = 4;
+			}
+			else if (random < 28) {
+				enemynum = 2 + (rand() % 2);
+			}
+			else {
+				enemynum = 7;
+			}
 			dc = 100;
 		}
 		else {
