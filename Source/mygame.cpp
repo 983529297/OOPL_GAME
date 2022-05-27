@@ -174,13 +174,13 @@ void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		if (win_state == 0) {
 			if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height()) {
 				start_size = 1.1;
-				start.SetTopLeft(552, 582);//SIZE_Y/8);
+				start.SetTopLeft(552 - 25, 582 - 10);//SIZE_Y/8);
 				option.SetTopLeft(555, 729);//SIZE_Y/8);
 				option_size = 1;
 			}
 			else if (option.Left() < point.x && point.x < option.Left() + option.Width() && option.Top() < point.y && point.y < option.Top() + option.Height()){
 				option_size = 1.1;
-				option.SetTopLeft(555, 729);//SIZE_Y/8);
+				option.SetTopLeft(555 - 25, 729 - 10);//SIZE_Y/8);
 				start.SetTopLeft(552, 582);//SIZE_Y/8);
 				start_size = 1;
 			}
@@ -530,11 +530,11 @@ void CGameStateRun::OnBeginState()
 	upgrade_black.SetTopLeft((SIZE_X - stage->GetBackWidth()) / 2, SIZE_Y - upgrade_black.Height());
 	if (music_game) {
 		CAudio::Instance()->Play(AUDIO_NORM, true);
-		CAudio::Instance()->Play(AUDIO_HARD, true);
+		//CAudio::Instance()->Play(AUDIO_HARD, true);
 	}
 	else {
 		CAudio::Instance()->Stop(AUDIO_NORM);
-		CAudio::Instance()->Stop(AUDIO_HARD);
+		//CAudio::Instance()->Stop(AUDIO_HARD);
 	}
 }
 
@@ -548,13 +548,13 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	if (enemyTowerBlood.GetInteger() <= 0) {
 		win_lose = 1;
 		CAudio::Instance()->Stop(AUDIO_NORM);
-		CAudio::Instance()->Stop(AUDIO_HARD);
+		//CAudio::Instance()->Stop(AUDIO_HARD);
 		GotoGameState(GAME_STATE_OVER);
 	}
 	else if (friendTowerBlood.GetInteger() <= 0){
 		win_lose = 0;
 		CAudio::Instance()->Stop(AUDIO_NORM);
-		CAudio::Instance()->Stop(AUDIO_HARD);
+		//CAudio::Instance()->Stop(AUDIO_HARD);
 		GotoGameState(GAME_STATE_OVER);
 	}
 	VectorSort();
@@ -683,17 +683,15 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	else if (nChar == 0x35) {			//5
 		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
 	}
-	else if (nChar == 0x55 && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
+	else if (nChar == 0x4E)		//n
 	{
-		callPoint.Add(-(upgradePoint.GetInteger()));
-		upgradePoint.Add(40);
-		callPointTotal.Add(50);
-		addPoint += 1;
+		CAudio::Instance()->Stop(AUDIO_NORM);
+		GotoGameState(GAME_STATE_INIT);
 	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
-{//name, hp, ap, dp, ms, attack_pic, walk_pic, as
+{//name, hp, ap, ws, ms, attack_pic, walk_pic, as
 	if (block[0].Left() < point.x && point.x < block[0].Left() + block[0].Width() && block[0].Top() < point.y && point.y < block[0].Top() + block[0].Height() && callPoint.GetInteger() >= stoi(data_friend[0][10])) {				//1
 		cat_friend.push_back(new Cat_friend(data_friend[0][0], stoi(data_friend[0][2]), stoi(data_friend[0][1]), stoi(data_friend[0][3]), stoi(data_friend[0][4]), stoi(data_friend[0][8]), stoi(data_friend[0][9]), stoi(data_friend[0][5])));
 		callPoint.Add(-stoi(data_friend[0][10]));
@@ -824,23 +822,23 @@ void CGameStateRun::VectorSort() {
 }
 
 void CGameStateRun::readCSV() {
-	//name, ap, hp, dp, ms, as, at, range, attack_pic, walk_pic, cost
+	//name, ap, hp, ws, ms, as, at, range, attack_pic, walk_pic, cost
 	data_enemy = {
-		{"e000", "100", "200", "50", "3", "7", "single", "5", "4", "3"},
-		{"e001", "100", "200", "50", "3", "7", "single", "5", "4", "4"},
-		{"e005", "100", "200", "50", "3", "7", "single", "5", "7", "11"},
-		{"e012", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
-		{"e013", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
-		{"e015", "100", "200", "50", "3", "7", "single", "5", "4", "5"},
-		{"e016", "100", "200", "50", "3", "7", "single", "5", "3", "6"},
-		{"e018", "100", "200", "50", "3", "7", "single", "5", "3", "3"},
+		{"e000", "8", "90", "10", "3", "5", "single", "5", "4", "3"},
+		{"e001", "15", "100", "5", "3", "4", "single", "5", "4", "4"},
+		{"e005", "80", "1200", "5", "3", "2", "single", "5", "7", "11"},
+		{"e012", "1000", "3000", "7", "3", "5", "single", "5", "3", "6"},
+		{"e013", "30", "70", "10", "3", "2", "single", "5", "3", "6"},
+		{"e015", "30", "80", "5", "3", "2", "single", "5", "4", "5"},
+		{"e016", "3000", "550", "7", "3", "3", "single", "5", "3", "6"},
+		{"e018", "2000", "99999", "10", "3", "5", "single", "5", "3", "3"},
 	};
 	data_friend = {
-		{"f000", "100", "200", "50", "3", "7", "single", "5", "4", "3", "50"},
-		{"f001", "100", "200", "50", "2", "7", "single", "5", "4", "3", "50"},
-		{"f004", "100", "200", "50", "2", "7", "single", "5", "4", "4", "50"},
-		{"f008", "100", "200", "50", "2", "7", "single", "5", "7", "6", "50"},
-		{"f018", "100", "200", "50", "2", "3", "single", "5", "8", "4", "50"},
+		{"f000", "355", "4450", "10", "3", "4", "single", "5", "4", "3", "50"},
+		{"f001", "90", "17800", "10", "2", "7", "single", "5", "4", "3", "50"},
+		{"f004", "577", "22550", "5", "2", "4", "single", "5", "4", "4", "100"},
+		{"f008", "12460", "44500", "10", "2", "7", "single", "5", "7", "6", "150"},
+		{"f018", "474", "4080", "10", "2", "2", "single", "5", "8", "4", "70"},
 	};
 	/*ifstream infile_friend("data_friend.csv", ios::in);
 	if (!infile_friend) {

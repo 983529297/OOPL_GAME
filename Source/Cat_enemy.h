@@ -36,7 +36,7 @@ namespace game_framework {
 		int x, y;
 		int attackPoint;
 		int blood;
-		int defancePoint;
+		int walk_speed;
 		int speedPoint;
 		int attack_pic;
 		int walk_pic;

@@ -22,7 +22,7 @@ namespace game_framework {
 			srand((unsigned)time(NULL));
 			int random = rand() % 3;
 			enemynum = random;
-			dc = 50;
+			dc = 70;
 		}
 		else {
 			enemynum = -1;

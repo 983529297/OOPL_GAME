@@ -10,12 +10,12 @@
 
 namespace game_framework {
 
-	Cat_enemy::Cat_enemy(string name, int blood, int attack, int defence, int speed, int attack_pic, int walk_pic, int as) {
+	Cat_enemy::Cat_enemy(string name, int blood, int attack, int walk_speed, int speed, int attack_pic, int walk_pic, int as) {
 		srand((unsigned)time(NULL));
 		int random = rand() % 20;
 		this->name = name;
 		this->blood = blood;
-		this->defancePoint = defence;
+		this->walk_speed = walk_speed;
 		this->attackPoint = attack;
 		this->is_enemy = 1;
 		this->speedPoint = speed;
@@ -162,6 +162,7 @@ namespace game_framework {
 			char* path = (char*)walkPath.at(i).c_str();
 			animation_walk.AddBitmap(path, RGB(1, 1, 1));
 		}
+		animation_walk.SetDelayCount(walk_speed);
 	}
 
 	void Cat_enemy::OnShow_Walk() {
