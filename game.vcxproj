@@ -359,6 +359,7 @@
     <Image Include="RES\7.bmp" />
     <Image Include="RES\8.bmp" />
     <Image Include="RES\9.bmp" />
+    <Image Include="RES\about.bmp" />
     <Image Include="RES\back1.bmp" />
     <Image Include="RES\back10.bmp" />
     <Image Include="RES\back2.bmp" />
@@ -567,6 +568,7 @@
     <Image Include="RES\upgrade.bmp" />
     <Image Include="RES\upgrade_black.bmp" />
     <Image Include="RES\win.bmp" />
+    <Image Include="RES\win_about.bmp" />
     <Image Include="RES\win_option.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

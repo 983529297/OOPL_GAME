@@ -81,6 +81,8 @@ void CGameStateInit::OnInit()
 	//
 	// 開始載入資料
 	//
+	about.LoadBitmap(IDB_ABOUT, (0, 0, 255));
+	win_about.LoadBitmap(IDB_WINABOUT, (0, 0, 255));
 	logo.LoadBitmap(IDB_OPEND);
 	start.LoadBitmap(IDB_START, (0, 0, 255));
 	option.LoadBitmap(IDB_OPTION, (0, 0, 255));
@@ -105,6 +107,8 @@ void CGameStateInit::OnInit()
 	musicSoundAnti.LoadBitmap(IDB_MUSIC_SOUND_ANTI, (0, 0, 255));
 	gameSound.LoadBitmap(IDB_GAME_SOUND, (0, 0, 255));
 	gameSoundAnti.LoadBitmap(IDB_GAME_SOUND_ANTI, (0, 0, 255));
+	win_about.SetTopLeft(SIZE_X / 2 - 185, 250);
+	about.SetTopLeft(1425, 810);
 	musicSound.SetTopLeft(730, 403);
 	musicSoundAnti.SetTopLeft(730, 403);
 	gameSound.SetTopLeft(873, 403);
@@ -128,7 +132,7 @@ void CGameStateInit::OnInit()
 	start.SetTopLeft(552, 582);//SIZE_Y/8);
 	option.SetTopLeft(555, 729);//SIZE_Y/8);
 	win_option.SetTopLeft(SIZE_X / 2 - 185, 250);//SIZE_Y/8);
-	close.SetTopLeft(980, 250);//790
+	close.SetTopLeft(990, 250);//790
 	start_size = 1;
 	option_size = 1;
 	game_sound_size = music_sound_size = close_size = 1;
@@ -275,6 +279,9 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		else if (option.Left() < point.x && point.x < option.Left() + option.Width() && option.Top() < point.y && point.y < option.Top() + option.Height()) {
 			win_state = 1;
 		}
+		else if (about.Left() < point.x && point.x < about.Left() + about.Width() && about.Top() < point.y && point.y < about.Top() + about.Height()) {
+			win_state = 3;
+		}
 	}
 	else if (win_state == 1) {
 		if (close.Left() < point.x && point.x < close.Left() + close.Width() && close.Top() < point.y && point.y < close.Top() + close.Height()) {
@@ -289,6 +296,11 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 		else if (gameSound.Left() < point.x && point.x < gameSound.Left() + gameSound.Width() && gameSound.Top() < point.y && point.y < gameSound.Top() + gameSound.Height()) {
 			music_game = !music_game;
+		}
+	}
+	else if (win_state == 3) {
+		if (close.Left() < point.x && point.x < close.Left() + close.Width() && close.Top() < point.y && point.y < close.Top() + close.Height()) {
+			win_state = 0;
 		}
 	}
 	else {
@@ -348,6 +360,7 @@ void CGameStateInit::OnShow()
 		logo.ShowBitmap();
 		start.ShowBitmap(start_size);
 		option.ShowBitmap(option_size);
+		about.ShowBitmap();
 	}
 	else if (win_state == 1) {
 		logo.ShowBitmap();
@@ -360,6 +373,11 @@ void CGameStateInit::OnShow()
 			gameSound.ShowBitmap(game_sound_size);
 		else
 			gameSoundAnti.ShowBitmap(game_sound_size);
+		close.ShowBitmap(close_size);
+	}
+	else if (win_state == 3) {
+		logo.ShowBitmap();
+		win_about.ShowBitmap();
 		close.ShowBitmap(close_size);
 	}
 	else {

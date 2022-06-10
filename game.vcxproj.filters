@@ -909,5 +909,11 @@
     <Image Include="RES\music_sound_anti.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\about.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\win_about.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

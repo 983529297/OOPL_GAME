@@ -90,6 +90,8 @@ namespace game_framework {
 		CMovingBitmap logo;								// csieªºlogo
 		CMovingBitmap start;								// csieªºlogo
 		CMovingBitmap option;
+		CMovingBitmap about;
+		CMovingBitmap win_about;
 		CMovingBitmap win_option;
 		CMovingBitmap close;
 		CMovingBitmap state_back;

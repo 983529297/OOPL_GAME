@@ -518,6 +518,10 @@ IDB_GAME_SOUND_ANTI     BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RE
 
 IDB_MUSIC_SOUND_ANTI    BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\music_sound_anti.bmp"
 
+IDB_ABOUT               BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\about.bmp"
+
+IDB_WINABOUT            BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\win_about.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
