@@ -83,7 +83,7 @@ void CGameStateInit::OnInit()
 	//
 	about.LoadBitmap(IDB_ABOUT, (0, 0, 255)); 
 	win_about.LoadBitmap(IDB_WINABOUT, (0, 0, 255));
-	//secretKey.LoadBitmap(IDB_SECRET_KEY, (0, 0, 255));
+	secretKey.LoadBitmap(IDB_SECRET_KEY, (0, 0, 255));
 	logo.LoadBitmap(IDB_OPEND);
 	start.LoadBitmap(IDB_START, (0, 0, 255));
 	option.LoadBitmap(IDB_OPTION, (0, 0, 255));
@@ -110,6 +110,7 @@ void CGameStateInit::OnInit()
 	gameSoundAnti.LoadBitmap(IDB_GAME_SOUND_ANTI, (0, 0, 255));
 	win_about.SetTopLeft(SIZE_X / 2 - 185, 250);
 	about.SetTopLeft(1425, 810);
+	secretKey.SetTopLeft(0, 582);
 	musicSound.SetTopLeft(730, 403);
 	musicSoundAnti.SetTopLeft(730, 403);
 	gameSound.SetTopLeft(873, 403);
@@ -362,6 +363,7 @@ void CGameStateInit::OnShow()
 		start.ShowBitmap(start_size);
 		option.ShowBitmap(option_size);
 		about.ShowBitmap();
+		secretKey.ShowBitmap(0.5);
 	}
 	else if (win_state == 1) {
 		logo.ShowBitmap();
