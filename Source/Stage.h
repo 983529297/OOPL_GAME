@@ -12,6 +12,7 @@ namespace game_framework {
 		virtual int GetBackWidth() { return 0; };
 	protected:
 		int enemynum = -1;
+		int count = 0;
 	private:
 
 	};

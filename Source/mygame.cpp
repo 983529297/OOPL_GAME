@@ -708,6 +708,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		CAudio::Instance()->Stop(AUDIO_NORM);
 		GotoGameState(GAME_STATE_INIT);
 	}
+	else if (nChar == 0x4B) {
+		enemyTowerBlood.Add(-100);
+	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作

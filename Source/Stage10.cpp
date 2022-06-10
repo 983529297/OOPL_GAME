@@ -21,7 +21,7 @@ namespace game_framework {
 		if (--dc == 0) {
 			//srand((unsigned)time(NULL));
 			//int random = rand() % 3;
-			enemynum = 5;
+			enemynum = 3;
 			dc = 30;
 		}
 		else {

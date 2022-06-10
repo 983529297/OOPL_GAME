@@ -10,7 +10,7 @@
 namespace game_framework {
 
 	Stage7::Stage7() {
-		
+		count = 0;
 	}
 
 	Stage7::~Stage7() {
@@ -28,10 +28,17 @@ namespace game_framework {
 				enemynum = 4;
 			}
 			else if (random < 28) {
-				enemynum = 2 + (rand() % 2);
+				enemynum = 5 + (rand() % 2);
 			}
 			else {
 				enemynum = 7;
+			}
+			if (count == 50) {
+				enemynum = 8;
+				count = 0;
+			}
+			else {
+				count++;
 			}
 			dc = 90;
 		}
