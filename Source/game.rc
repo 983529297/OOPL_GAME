@@ -114,8 +114,6 @@ IDB_TOWER1              BITMAP                  "..\\RES\\tower1.bmp"
 
 IDB_TOWER2              BITMAP                  "..\\RES\\tower2.bmp"
 
-IDB_E_DOG_WALK_0        BITMAP                  "..\\RES\\e_dog_walk_0.bmp"
-
 IDB_UPGRADE             BITMAP                  "..\\RES\\upgrade.bmp"
 
 IDB_UPGRADE_BLACK       BITMAP                  "..\\RES\\upgrade_black.bmp"
@@ -450,21 +448,21 @@ IDB_E_018_ATTACK_2      BITMAP                  "..\\RES\\enemy\\e018\\e018_atta
 
 IDB_E_018_KNOCKBACK_0   BITMAP                  "..\\RES\\enemy\\e018\\e018_knockback_0.bmp"
 
-IDB_E_101_WALK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_0.bmp"
+IDB_E_101_WALK_0        BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_0.bmp"
 
-IDB_E_101_WALK_1    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_1.bmp"
+IDB_E_101_WALK_1        BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_1.bmp"
 
-IDB_E_101_WALK_2    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_2.bmp"
+IDB_E_101_WALK_2        BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_2.bmp"
 
-IDB_E_101_WALK_3    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_3.bmp"
+IDB_E_101_WALK_3        BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_3.bmp"
 
-IDB_E_101_ATTACK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_0.bmp"
+IDB_E_101_ATTACK_0      BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_0.bmp"
 
-IDB_E_101_ATTACK_1    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_1.bmp"
+IDB_E_101_ATTACK_1      BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_1.bmp"
 
-IDB_E_101_ATTACK_2    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_2.bmp"
+IDB_E_101_ATTACK_2      BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_2.bmp"
 
-IDB_E_101_KNOCKBACK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_knockback_0.bmp"
+IDB_E_101_KNOCKBACK_0   BITMAP                  "..\\RES\\enemy\\e101\\e101_knockback_0.bmp"
 
 IDB_BACK2               BITMAP                  "..\\RES\\back2.bmp"
 
@@ -538,7 +536,11 @@ IDB_ABOUT               BITMAP                  "..\\RES\\about.bmp"
 
 IDB_WINABOUT            BITMAP                  "..\\RES\\win_about.bmp"
 
-IDB_SECRET_KEY            BITMAP                  "..\\RES\\secret_key.bmp"
+IDB_SECRET_KEY          BITMAP                  "..\\RES\\secret_key.bmp"
+
+IDB_BITMAP13            BITMAP                  "C:\\Users\\∂¿§h≈k\\OneDrive\\Æ‡≠±\\NTUT\\110-2\\oopl\\OOPL_GAME\\RES\\secret_key.bmp"
+
+IDB_BITMAP14            BITMAP                  "..\\res\\bitmap14.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

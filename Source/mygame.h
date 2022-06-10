@@ -92,6 +92,7 @@ namespace game_framework {
 		CMovingBitmap option;
 		CMovingBitmap about;
 		CMovingBitmap win_about;
+		CMovingBitmap secretKey;
 		CMovingBitmap win_option;
 		CMovingBitmap close;
 		CMovingBitmap state_back;

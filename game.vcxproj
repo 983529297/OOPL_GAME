@@ -373,6 +373,7 @@
     <Image Include="RES\battle.bmp" />
     <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap12.bmp" />
+    <Image Include="res\bitmap14.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_0.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_1.bmp" />
     <Image Include="RES\cat\f000\f000_f_attack_2.bmp" />
@@ -517,6 +518,14 @@
     <Image Include="RES\enemy\e018\e018_walk_0.bmp" />
     <Image Include="RES\enemy\e018\e018_walk_1.bmp" />
     <Image Include="RES\enemy\e018\e018_walk_2.bmp" />
+    <Image Include="RES\enemy\e101\e101_attack_0.bmp" />
+    <Image Include="RES\enemy\e101\e101_attack_1.bmp" />
+    <Image Include="RES\enemy\e101\e101_attack_2.bmp" />
+    <Image Include="RES\enemy\e101\e101_knockback_0.bmp" />
+    <Image Include="RES\enemy\e101\e101_walk_0.bmp" />
+    <Image Include="RES\enemy\e101\e101_walk_1.bmp" />
+    <Image Include="RES\enemy\e101\e101_walk_2.bmp" />
+    <Image Include="RES\enemy\e101\e101_walk_3.bmp" />
     <Image Include="RES\e_dog_knockback.bmp" />
     <Image Include="RES\e_dog_walk_0.bmp" />
     <Image Include="RES\e_dog_walk_1.bmp" />
@@ -538,6 +547,7 @@
     <Image Include="RES\opend.bmp" />
     <Image Include="RES\option.bmp" />
     <Image Include="RES\over_back.bmp" />
+    <Image Include="RES\secret_key.bmp" />
     <Image Include="RES\slash.bmp" />
     <Image Include="RES\slash_T.bmp" />
     <Image Include="RES\stage1.bmp" />

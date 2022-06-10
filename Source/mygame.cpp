@@ -81,8 +81,9 @@ void CGameStateInit::OnInit()
 	//
 	// 開始載入資料
 	//
-	about.LoadBitmap(IDB_ABOUT, (0, 0, 255));
+	about.LoadBitmap(IDB_ABOUT, (0, 0, 255)); 
 	win_about.LoadBitmap(IDB_WINABOUT, (0, 0, 255));
+	//secretKey.LoadBitmap(IDB_SECRET_KEY, (0, 0, 255));
 	logo.LoadBitmap(IDB_OPEND);
 	start.LoadBitmap(IDB_START, (0, 0, 255));
 	option.LoadBitmap(IDB_OPTION, (0, 0, 255));
