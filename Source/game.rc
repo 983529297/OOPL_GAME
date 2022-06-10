@@ -450,6 +450,22 @@ IDB_E_018_ATTACK_2      BITMAP                  "..\\RES\\enemy\\e018\\e018_atta
 
 IDB_E_018_KNOCKBACK_0   BITMAP                  "..\\RES\\enemy\\e018\\e018_knockback_0.bmp"
 
+IDB_E_101_WALK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_0.bmp"
+
+IDB_E_101_WALK_1    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_1.bmp"
+
+IDB_E_101_WALK_2    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_2.bmp"
+
+IDB_E_101_WALK_3    BITMAP                  "..\\RES\\enemy\\e101\\e101_walk_3.bmp"
+
+IDB_E_101_ATTACK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_0.bmp"
+
+IDB_E_101_ATTACK_1    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_1.bmp"
+
+IDB_E_101_ATTACK_2    BITMAP                  "..\\RES\\enemy\\e101\\e101_attack_2.bmp"
+
+IDB_E_101_KNOCKBACK_0    BITMAP                  "..\\RES\\enemy\\e101\\e101_knockback_0.bmp"
+
 IDB_BACK2               BITMAP                  "..\\RES\\back2.bmp"
 
 IDB_BACK3               BITMAP                  "..\\RES\\back3.bmp"
@@ -508,15 +524,15 @@ IDB_GOBACK              BITMAP                  "..\\RES\\goBack.bmp"
 
 IDB_BATTLE              BITMAP                  "..\\RES\\battle.bmp"
 
-IDB_STAGE_SPOT          BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\stage_spot.bmp"
+IDB_STAGE_SPOT          BITMAP                  "..\\RES\\stage_spot.bmp"
 
-IDB_GAME_SOUND          BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\game_sound.bmp"
+IDB_GAME_SOUND          BITMAP                  "..\\RES\\game_sound.bmp"
 
-IDB_MUSIC_SOUND         BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\music_sound.bmp"
+IDB_MUSIC_SOUND         BITMAP                  "..\\RES\\music_sound.bmp"
 
-IDB_GAME_SOUND_ANTI     BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\game_sound_anti.bmp"
+IDB_GAME_SOUND_ANTI     BITMAP                  "..\\RES\\game_sound_anti.bmp"
 
-IDB_MUSIC_SOUND_ANTI    BITMAP                  "D:\\Mydata\\OOPL\\OOPL_GAME\\RES\\music_sound_anti.bmp"
+IDB_MUSIC_SOUND_ANTI    BITMAP                  "..\\RES\\music_sound_anti.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
