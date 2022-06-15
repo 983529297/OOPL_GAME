@@ -145,7 +145,7 @@ namespace game_framework {
 			string path = ".\\res\\enemy\\" + name + "\\" + name + "_attack_" + to_string(i) + ".bmp";
 			attackPath.push_back(path);
 		}
-		for (int i = 0; i < attack_pic; i++) {// 載入動畫(由4張圖形構成)
+		for (int i = 0; i < attack_pic; i++) {
 			char* path = (char *)attackPath.at(i).c_str();
 			animation_attack.AddBitmap(path, RGB(1, 1, 1));
 		}
@@ -158,7 +158,7 @@ namespace game_framework {
 			string path = ".\\res\\enemy\\" + name + "\\" + name + "_walk_" + to_string(i) + ".bmp";
 			walkPath.push_back(path);
 		}
-		for (int i = 0; i < walk_pic; i++) {// 載入動畫(由4張圖形構成)
+		for (int i = 0; i < walk_pic; i++) {
 			char* path = (char*)walkPath.at(i).c_str();
 			animation_walk.AddBitmap(path, RGB(1, 1, 1));
 		}

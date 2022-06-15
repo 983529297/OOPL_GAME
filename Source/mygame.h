@@ -87,8 +87,8 @@ namespace game_framework {
 		double goBack_size;
 		double battle_size;
 		double stage1_size, stage2_size, stage3_size, stage4_size, stage5_size, stage6_size, stage7_size, stage8_size, stage9_size, stage10_size;
-		CMovingBitmap logo;								// csie的logo
-		CMovingBitmap start;								// csie的logo
+		CMovingBitmap logo;
+		CMovingBitmap start;
 		CMovingBitmap option;
 		CMovingBitmap about;
 		CMovingBitmap win_about;
@@ -105,7 +105,6 @@ namespace game_framework {
 		CMovingBitmap gameSound;
 		CMovingBitmap gameSoundAnti;
 		CMovingBitmap stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
-		int x, y;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -133,7 +132,7 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		CMovingBitmap	background;	// 背景圖
+		CMovingBitmap	background;						// 背景圖
 		CMovingBitmap	upgrade;
 		CMovingBitmap	upgrade_black;
 		CMovingBitmap	empty_block[5];
@@ -159,7 +158,6 @@ namespace game_framework {
 		int enemyTowerHitRange;
 		int friendTowerHitRange;
 		int addPoint = 1;
-		int x, y;
 		int weight;
 	};
 

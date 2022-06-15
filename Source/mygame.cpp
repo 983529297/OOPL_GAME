@@ -174,8 +174,6 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	x = point.x;
-	y = point.y;
 	if (ready) {
 		if (win_state == 0) {
 			if (start.Left() < point.x && point.x < start.Left() + start.Width() && start.Top() < point.y && point.y < start.Top() + start.Height()) {
@@ -400,17 +398,6 @@ void CGameStateInit::OnShow()
 		battle.ShowBitmap(battle_size);
 		cat_spot.ShowBitmap(0.6);
 	}
-	CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "%d, %d", x, y);
-	pDC->TextOut(240,210,str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }								
 
 /////////////////////////////////////////////////////////////////////////////
@@ -711,7 +698,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		CAudio::Instance()->Stop(AUDIO_NORM);
 		GotoGameState(GAME_STATE_INIT);
 	}
-	else if (nChar == 0x4B) {
+	else if (nChar == 0x4B) {	//k
 		enemyTowerBlood.Add(-100);
 	}
 }
@@ -736,7 +723,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	}
 	else if (block[4].Left() < point.x && point.x < block[4].Left() + block[4].Width() && block[0].Top() < point.y && point.y < block[4].Top() + block[4].Height() && callPoint.GetInteger() >= stoi(data_friend[4][10])) {			//5
 		cat_friend.push_back(new Cat_friend(data_friend[4][0], stoi(data_friend[4][2]), stoi(data_friend[4][1]), stoi(data_friend[4][3]), stoi(data_friend[4][4]), stoi(data_friend[4][8]), stoi(data_friend[4][9]), stoi(data_friend[4][5])));
-		callPoint.Add(-stoi(data_friend[3][10]));
+		callPoint.Add(-stoi(data_friend[4][10]));
 	}
 	else if (upgrade.Left() < point.x && point.x < upgrade.Left() + upgrade.Width() && upgrade.Top() < point.y && point.y < upgrade.Top() + upgrade.Height() && callPoint.GetInteger() >= upgradePoint.GetInteger())		//u
 	{
@@ -759,8 +746,6 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	x = point.x;
-	y = point.y;
 	// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
 }
 
@@ -824,17 +809,6 @@ void CGameStateRun::OnShow()
 			}
 		}
 	}
-	CDC* pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC
-	CFont f, * fp;
-	f.CreatePointFont(160, "Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp = pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0, 0, 0));
-	pDC->SetTextColor(RGB(255, 255, 0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "%d, %d", x, y);
-	pDC->TextOut(240, 210, str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }
 void CGameStateRun::VectorSort() {
 	for (unsigned i = 1; i < cat_enemy.size(); i++) {
