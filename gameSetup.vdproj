@@ -6989,7 +6989,7 @@
         "ProductName" = "8:CatWar"
         "ProductCode" = "8:{98B6AE9A-65A8-4A9D-BFE3-46250BFD1572}"
         "PackageCode" = "8:{B065CBA6-62FA-401B-905C-56E792351A46}"
-        "UpgradeCode" = "8:{993E2171-D2E9-4DAD-9E2B-21AB8293D19E}"
+        "UpgradeCode" = "8:{015023FC-7574-46CB-ABA6-D7E2D286B141}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
