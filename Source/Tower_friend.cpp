@@ -42,10 +42,6 @@ namespace game_framework {
 		this->is_alive = is_alive;
 	}
 
-	/*bool Tower_enemy::CheckEnemy(Cat* enemy) {
-
-	}*/
-
 	void Tower_friend::SetXY(int x, int y) {
 		this->x = x;
 		this->y = y;

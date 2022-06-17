@@ -9,7 +9,7 @@ namespace game_framework {
 		void BeAttack(int);
 		void SetDefence(int);
 		bool IsAlive();										// 是否活著
-		int GetHitBox();								// find enemy
+		int GetHitBox();									// find enemy
 		void LoadBitmap();									// 載入圖形
 		void OnShow();										// 將圖形貼到畫面
 		void SetXY(int, int);								// 設定圓心的座標
@@ -22,7 +22,7 @@ namespace game_framework {
 		CMovingBitmap bmp;
 		int blood;
 		int attackPoint;
-		bool is_alive;				// 是否活著
+		bool is_alive;				
 		int defencePoint;
 		int x, y;
 		int centerX;

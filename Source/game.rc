@@ -538,7 +538,7 @@ IDB_WINABOUT            BITMAP                  "..\\RES\\win_about.bmp"
 
 IDB_SECRET_KEY          BITMAP                  "..\\RES\\secret_key.bmp"
 
-IDB_BITMAP13            BITMAP                  "C:\\Users\\∂¿§h≈k\\OneDrive\\Æ‡≠±\\NTUT\\110-2\\oopl\\OOPL_GAME\\RES\\secret_key.bmp"
+IDB_BITMAP13            BITMAP                  "..\\RES\\secret_key.bmp"
 
 IDB_BITMAP14            BITMAP                  "..\\res\\bitmap14.bmp"
 
