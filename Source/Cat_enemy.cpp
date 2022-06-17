@@ -110,8 +110,6 @@ namespace game_framework {
 		animation_attack.Reset();
 		animation_walk.Reset();
 		this->reset = false;
-		//is_final_attack = false;
-		//is_attack = false;
 	}
 
 	int Cat_enemy::Attack() {

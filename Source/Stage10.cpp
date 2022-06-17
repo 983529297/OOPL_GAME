@@ -19,8 +19,6 @@ namespace game_framework {
 	
 	void Stage10::countEnemyNum() {
 		if (--dc == 0) {
-			//srand((unsigned)time(NULL));
-			//int random = rand() % 3;
 			enemynum = 3;
 			dc = 30;
 		}

@@ -6987,9 +6987,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CatWar"
-        "ProductCode" = "8:{EFEB21C0-0D8E-4F3E-9A44-C5D07B9861AD}"
+        "ProductCode" = "8:{98B6AE9A-65A8-4A9D-BFE3-46250BFD1572}"
         "PackageCode" = "8:{4E1F1E4B-4A4B-4CD2-AC91-02CC352830C2}"
-        "UpgradeCode" = "8:{56864DC0-362A-4E4F-BBE7-BD7B0F1DD0F9}"
+        "UpgradeCode" = "8:{B37E82EC-18B1-48C2-9BEA-AC1D296F6ED8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
